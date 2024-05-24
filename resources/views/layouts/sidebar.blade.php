@@ -21,30 +21,35 @@
 	              <a href="#">Home</a>
 	          </li>
 	          <li>
-	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+	            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">People</a>
 	            <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a href="#">Home 1</a>
+                    <a href="#">Doctor</a>
                 </li>
                 <li>
-                    <a href="#">Home 2</a>
-                </li>
-                <li>
-                    <a href="#">Home 3</a>
+                    <a href="#">Patient</a>
                 </li>
 	            </ul>
 	          </li>
 	          <li>
-              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Appointment</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
-                    <a href="#">Page 1</a>
+                    <a href="#">Consultations</a>
                 </li>
                 <li>
-                    <a href="#">Page 2</a>
+                    <a href="#">Schedules</a>
+                </li>
+              </ul>
+	          </li>
+			  <li>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Telemedecine</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="#">Medecine</a>
                 </li>
                 <li>
-                    <a href="#">Page 3</a>
+                    <a href="#">Payment</a>
                 </li>
               </ul>
 	          </li>

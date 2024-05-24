@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Admin</h5>
                         <p class="card-text">Login sebagai admin untuk mengelola sistem.</p>
-                        <a href="#" class="btn btn-primary">Login Admin</a>
+                        <a href="{{ URL::to('admin') }}" class="btn btn-primary">Login Admin</a>
                     </div>
                 </div>
             </div>
