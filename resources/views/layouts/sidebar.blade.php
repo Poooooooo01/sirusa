@@ -56,7 +56,10 @@
               class="dropdown-toggle">Telemedicine</a>
             <ul class="collapse list-unstyled" id="telemedicineSubmenu">
               <li>
-                <a href="#">Medicine</a>
+                <a href="#">Telemedicine</a>
+              </li>
+              <li>
+                <a href="#">Drug</a>
               </li>
               <li>
                 <a href="#">Payment</a>
