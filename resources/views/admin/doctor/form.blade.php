@@ -92,7 +92,7 @@
                 @enderror
             </div>
             
-            <input type="hidden" name="role" value="pasien">
+            <input type="hidden" name="role" value="dokter">
             <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
             <a href="{{ route('patientadmin.index') }}" class="btn btn-sm btn-secondary">Kembali</a>
         </div>

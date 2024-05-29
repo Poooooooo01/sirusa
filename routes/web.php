@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\PatientAdminController;
 use App\Http\Controllers\DoctorAdminController;
+use App\Http\Controllers\DrugController;
+use App\Http\Controllers\SchedulesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('useradmin', UserAdminController::class);
     Route::resource('patientadmin', PatientAdminController::class);
     Route::resource('doctoradmin', DoctorAdminController::class);
+    Route::resource('drug', DrugController::class);
+    Route::resource('schedules', SchedulesController::class);
+    Route::resource('consultations', ConsultationController::class);
 });

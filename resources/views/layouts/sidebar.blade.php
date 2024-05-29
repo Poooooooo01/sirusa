@@ -44,7 +44,7 @@
               class="dropdown-toggle">Appointment</a>
             <ul class="collapse list-unstyled" id="appointmentSubmenu">
               <li>
-                <a href="#">Consultations</a>
+                <a href="{{ URL::to('consultations') }}">Consultations</a>
               </li>
               <li>
                 <a href="#">Schedules</a>
@@ -59,13 +59,21 @@
                 <a href="#">Telemedicine</a>
               </li>
               <li>
-                <a href="#">Drug</a>
+                <a href="{{ URL::to('drug') }}">Drug</a>
               </li>
               <li>
                 <a href="#">Payment</a>
               </li>
             </ul>
           </li>
+          <li>
+            <a href="#doctorSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Doctor</a>
+            <ul class="collapse list-unstyled" id="doctorSubmenu">
+              <li>
+                <a href="{{ URL::to('schedules') }}">Schedules</a>
+              </li>
+              </ul>
           <li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
