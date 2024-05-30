@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FacilityAdminController;
+use App\Http\Controllers\HealthAdminController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserAdminController;
@@ -30,4 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('useradmin', UserAdminController::class);
     Route::resource('patientadmin', PatientAdminController::class);
     Route::resource('doctoradmin', DoctorAdminController::class);
+    Route::resource('health', HealthAdminController::class);
+    Route::resource('facilitie', FacilityAdminController::class);
 });

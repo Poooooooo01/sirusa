@@ -25,6 +25,12 @@
             <a href="{{ URL::to('admin') }}" class="nav-link {{ Request::is('admin') ? ' active' : '' }}">Home</a>
           </li>
           <li>
+            <a href="{{ URL::to('health') }}" class="nav-link {{ Request::is('health') ? ' active' : '' }}">Health_information</a>
+          </li>
+          <li>
+            <a href="{{ URL::to('facilitie') }}" class="nav-link {{ Request::is('facilitie') ? ' active' : '' }}">Facilities</a>
+          </li>
+          <li>
             <a href="#peopleSubmenu" data-toggle="collapse" aria-expanded="false"
               class="dropdown-toggle">People</a>
             <ul class="collapse list-unstyled" id="peopleSubmenu">
@@ -122,6 +128,18 @@
       });
     });
   </script>
+  <script>
+    //message with toastr
+    @if(session()->has('success'))
+
+        toastr.success('{{ session('success') }}', 'BERHASIL!');
+
+    @elseif(session()->has('error'))
+
+        toastr.error('{{ session('error') }}', 'GAGAL!');
+
+    @endif
+</script>
 </body>
 
 </html>
