@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserAdminController;
@@ -36,4 +37,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('drug', DrugController::class);
     Route::resource('schedules', SchedulesController::class);
     Route::resource('consultations', ConsultationController::class);
+    Route::resource('configuration', ConfigurationController::class);
+
 });
