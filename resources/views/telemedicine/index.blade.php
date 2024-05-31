@@ -31,7 +31,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $telemedicine->service_name }}</td>
                 <td>{{ $telemedicine->description }}</td>
-                <td>{{ $telemedicine->consultation->doctor }}</td>
+                <td>{{ $telemedicine->consultation->doctor->name }}</td>
                 <td>{{ $telemedicine->price }}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">
@@ -49,7 +49,6 @@
         @endforeach
     </tbody>
 </table>
-
 
 
 @endsection

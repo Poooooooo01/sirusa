@@ -49,9 +49,13 @@ class TelemedicineAdminController extends Controller
 
     public function edit(string $id)
     {
-        $telemedicine = telemedicine::findOrFail($id);
-        $consultations = Telemedicine::all();
-        return view('telemedicine.form', ['title' => 'Edit Obat', 'telemedicine' => $telemedicine, 'consultations' => $consultations]);
+        $telemedicine = Telemedicine::with('consultation.doctor')->findOrFail($id);
+        $consultations = Consultation::with('doctor')->get();
+        return view('telemedicine.form', [
+            'title' => 'Edit Obat', 
+            'telemedicine' => $telemedicine, 
+            'consultations' => $consultations
+        ]);
     }
 
     public function update(Request $request, string $id)

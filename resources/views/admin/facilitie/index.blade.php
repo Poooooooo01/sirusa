@@ -14,7 +14,7 @@
     <thead>
         <tr>
             <th width="50px">No</th>
-            <th>facility_name</th>
+            <th>Facility Name</th>
             <th>Content</th>
             <th width="100px">Action</th>
         </tr>

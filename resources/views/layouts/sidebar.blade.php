@@ -25,7 +25,7 @@
             <a href="{{ URL::to('admin') }}" class="nav-link {{ Request::is('admin') ? ' active' : '' }}">Home</a>
           </li>
           <li>
-            <a href="{{ URL::to('health') }}" class="nav-link {{ Request::is('health') ? ' active' : '' }}">Health_information</a>
+            <a href="{{ URL::to('health') }}" class="nav-link {{ Request::is('health') ? ' active' : '' }}">Health Information</a>
           </li>
           <li>
             <a href="{{ URL::to('facilitie') }}" class="nav-link {{ Request::is('facilitie') ? ' active' : '' }}">Facilities</a>
@@ -50,10 +50,7 @@
               class="dropdown-toggle">Appointment</a>
             <ul class="collapse list-unstyled" id="appointmentSubmenu">
               <li>
-                <a href="{{ URL::to('consultations') }}">Consultations</a>
-              </li>
-              <li>
-                <a href="#">Schedules</a>
+                <a href="{{ URL::to('consultation') }}">Consultations</a>
               </li>
             </ul>
           </li>
@@ -68,6 +65,9 @@
                 <a href="{{ URL::to('drug') }}">Drug</a>
               </li>
               <li>
+                <a href="{{ URL::to('category') }}">Category</a>
+              </li>
+              <li>
                 <a href="#">Payment</a>
               </li>
             </ul>
@@ -80,7 +80,9 @@
                 <a href="{{ URL::to('schedules') }}">Schedules</a>
               </li>
               </ul>
-              <a href="{{ URL::to('configuration') }}">Schedules</a>
+              <li>
+              <a href="{{ URL::to('configuration') }}">Configuration</a>
+              </li>
           <li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
@@ -137,18 +139,6 @@
       });
     });
   </script>
-  <script>
-    //message with toastr
-    @if(session()->has('success'))
-
-        toastr.success('{{ session('success') }}', 'BERHASIL!');
-
-    @elseif(session()->has('error'))
-
-        toastr.error('{{ session('error') }}', 'GAGAL!');
-
-    @endif
-</script>
 </body>
 
 </html>
