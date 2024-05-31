@@ -17,11 +17,11 @@
 <table id="datatable1" class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th width="5%">#</th>
+            <th width="5%">Id.</th>
             <th>Service Name</th>
             <th>Description</th>
             <th>Doctor</th>
-            <th>Price</th>
+            <th>price</th>
             <th width="10%">Action</th>
         </tr>
     </thead>
@@ -49,7 +49,6 @@
         @endforeach
     </tbody>
 </table>
-
 
 
 @endsection
