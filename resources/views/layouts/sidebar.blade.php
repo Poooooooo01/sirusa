@@ -62,7 +62,7 @@
               class="dropdown-toggle">Telemedicine</a>
             <ul class="collapse list-unstyled" id="telemedicineSubmenu">
               <li>
-                <a href="#">Telemedicine</a>
+                <a href="{{ URL::to('telemedicine') }}">Telemedicine</a>
               </li>
               <li>
                 <a href="{{ URL::to('drug') }}">Drug</a>
