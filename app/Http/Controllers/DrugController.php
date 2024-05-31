@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Drug;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DrugController extends Controller
 {
@@ -28,9 +29,17 @@ class DrugController extends Controller
         ];
 
         $data = $request->validate([
+            'image' => 'required|mimes:jpg,png,jpeg,gif|max:1024',
             'description' => 'required',
             'category_id' => 'required',
         ], $messages);
+
+
+        if($request->hasFile('image')){
+            $data['image'] = $request->file('image')->store('img', 'public');
+        }else{
+            $data['image'] = null;
+        }
 
         Drug::create($data);
 
@@ -58,10 +67,22 @@ class DrugController extends Controller
         ];
 
         $data = $request->validate([
+            'image' => 'required|mimes:jpg,png,jpeg,gif|max:1024',
             'description' => 'required',
             'category_id' => 'required',
         ], $messages);
 
+            $drug = Drug::find($id);
+
+            if($request->hasFile('image')){
+                //use Illuminate\Support\Facades\Storage;
+                if($drug->image) {
+                    Storage::delete($drug->image);
+                }
+                $data['image'] = $request->file('image')->store('img', 'public');
+            }else{
+                $data['image'] = $drug->image;
+            }
         $drug = Drug::findOrFail($id);
         $drug->update($data);
 

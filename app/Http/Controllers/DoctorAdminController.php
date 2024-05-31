@@ -45,7 +45,7 @@ class DoctorAdminController extends Controller
             'email' => 'required|email|unique:users',
             'username' => 'required|alpha_num|unique:users',
             'password' => 'required|min:3',
-            'role' => 'required',            
+            'role' => 'required',
         ], $messages);
         try {
             //use Illuminate\Support\Facades\DB;
@@ -55,24 +55,24 @@ class DoctorAdminController extends Controller
                 'email' => $data['email'],
                 'username' => $data['username'],
                 'password' => Hash::make($data["password"]),
-                'role' => $data['role'], 
+                'role' => $data['role'],
             ]);
-    
+
             Doctor::create([
                 'id' => $user->id,
                 'nik' =>  $data['nik'],
                 'name' => $data['name'],
                 'specialization' => $data['specialization'],
                 'education' => $data['education'],
-                'office_number' => $data['office_number'],     
+                'office_number' => $data['office_number'],
             ]);
 
             DB::commit();
-            return redirect()->route('doctoradmin.index')->with("successMessage", "Tambah data sukses");    
+            return redirect()->route('doctoradmin.index')->with("successMessage", "Tambah data sukses");
         } catch (\Throwable $th) {
-            DB::rollback();            
+            DB::rollback();
             return redirect()->route('doctoradmin.index')->with("errorMessage", $th->getMessage());
-        } 
+        }
     }
 
     public function show($id)

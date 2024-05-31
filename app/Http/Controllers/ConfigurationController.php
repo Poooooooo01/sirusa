@@ -10,7 +10,7 @@ class ConfigurationController extends Controller
 {
     public function index()
     {
-        $configurations = Configuration::with('address');
+        $configurations = Configuration::all();
         return view('admin.configuration.index', ['title' => 'configurations', 'configurations' => $configurations]);
     }
 
