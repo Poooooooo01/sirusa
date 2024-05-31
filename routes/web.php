@@ -1,10 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\FacilityAdminController;
-use App\Http\Controllers\HealthAdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ConsultationController;
-use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserAdminController;
@@ -12,6 +10,10 @@ use App\Http\Controllers\PatientAdminController;
 use App\Http\Controllers\DoctorAdminController;
 use App\Http\Controllers\DrugController;
 use App\Http\Controllers\SchedulesController;
+use App\Http\Controllers\ConfigurationController;
+use App\Http\Controllers\HealthAdminController;
+use App\Http\Controllers\FacilityAdminController;
+use App\Http\Controllers\TelemedicineAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,12 +38,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('useradmin', UserAdminController::class);
     Route::resource('patientadmin', PatientAdminController::class);
     Route::resource('doctoradmin', DoctorAdminController::class);
-    Route::resource('health', HealthAdminController::class);
-    Route::resource('facilitie', FacilityAdminController::class);
-});
     Route::resource('drug', DrugController::class);
     Route::resource('schedules', SchedulesController::class);
-    Route::resource('consultations', ConsultationController::class);
+    Route::resource('consultation', ConsultationController::class);
     Route::resource('configuration', ConfigurationController::class);
-
+    Route::resource('category', CategoryController::class);
+    Route::resource('health', HealthAdminController::class);
+    Route::resource('facilitie', FacilityAdminController::class);
+    Route::resource('telemedicine', TelemedicineAdminController::class);
 });
