@@ -11,12 +11,16 @@ class ConfigurationController extends Controller
     public function index()
     {
         $configurations = Configuration::all();
+<<<<<<< HEAD
         return view('admin.configuration.index', ['title' => 'configurations', 'configurations' => $configurations]);
+=======
+        return view('configuration.index', ['title' => 'configurations', 'configurations' => $configurations]);
+>>>>>>> fikri/master
     }
 
     public function create()
     {
-        return view('admin.configuration.form', ['title' => 'Tambah ']);
+        return view('configuration.form', ['title' => 'Tambah ']);
     }
 
     public function store(Request $request)
@@ -41,13 +45,13 @@ class ConfigurationController extends Controller
     public function show(string $id)
     {
         $configuration = Configuration::findOrFail($id);
-        return view('admin.configuration.detail', ['title' => 'Detail Configurasi', 'configuration' => $configuration]);
+        return view('configuration.detail', ['title' => 'Detail Configurasi', 'configuration' => $configuration]);
     }
 
     public function edit(string $id)
     {
         $configuration = Configuration::findOrFail($id);
-        return view('admin.configuration.form', ['title' => 'Edit configuration', 'configuration' => $configuration]);
+        return view('configuration.form', ['title' => 'Edit configuration', 'configuration' => $configuration]);
     }
 
     public function update(Request $request, string $id)

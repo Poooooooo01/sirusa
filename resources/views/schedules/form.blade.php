@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="available_date">Available Date</label>
-                <input type="datetime-local" id="available_date" name="available_date" class="form-control @error('available_date') is-invalid @enderror" value="{{ isset($schedule) ? date('Y-m-d\TH:i', strtotime($schedule->available_date)) : old('available_date') }}">
+                <input type="time" id="available_date" name="available_date" class="form-control @error('available_date') is-invalid @enderror" value="{{ isset($schedule) ? date('Y-m-d\TH:i', strtotime($schedule->available_date)) : old('available_date') }}">
                 @error('available_date')
                     <div class="invalid-feedback">
                         {{ $message }}

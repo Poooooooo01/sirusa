@@ -31,15 +31,15 @@
                 <label for="consultation_id">Doctor</label>
                 <select class="form-control" name="consultation_id" id="consultation_id">
                     @foreach ($consultations as $consultation)
-                        <option value="{{ $consultation->id }}" {{ isset($consultation) && $consultation->consultation_id === $consultation->id ? 'selected' : '' }}>
-                            {{ $consultation->doctor }}
+                        <option value="{{ $consultation->id }}" {{ isset($telemedicine) && $telemedicine->consultation_id == $consultation->id ? 'selected' : '' }}>
+                            {{ optional($consultation->doctor)->name ?? 'No Doctor Assigned' }}
                         </option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <label for="price">price</label>
-                <input type="number" id="price" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ isset($consultation) ? $consultation->price : old('price') }}">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ isset($telemedicine) ? $telemedicine->price : old('price') }}">
                 @error('price')
                     <div class="invalid-feedback">
                         {{ $message }}
