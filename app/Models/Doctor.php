@@ -20,6 +20,7 @@ class Doctor extends Model
         'specialization',
         'education',
         'office_number',
+        'image'
     ];
 
     const CREATED_AT = 'created_at';

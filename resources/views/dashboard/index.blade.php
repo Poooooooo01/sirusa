@@ -447,14 +447,13 @@
     </section><!-- End Departments Section -->
 
     <!-- ======= Doctors Section ======= -->
-    <section class="section" id="trainers">
+    <section id="doctors" class="doctors">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading">
-                        <h2>Expert <em>Trainers</em></h2>
-                        <img src="assets/images/line-dec.png" alt="">
-                        <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
+                    <div class="section-heading text-center">
+                        <h2>Doctors</em></h2>
+                        <p>Rumah Sakit Terpadu</p>
                     </div>
                 </div>
             </div>
@@ -462,10 +461,10 @@
             @foreach ($doctors as $index => $doctor )
                 <div class="col-lg-4">
                     <div class="trainer-item">
-                        <div class="image-thumb">
+                        <div class="image-thumb text-center">
                             <img class="image-thumb" src="{{asset('storage/' . $doctor->image)}}" alt="">
                         </div>
-                        <div class="down-content">
+                        <div class="down-content text-center">
                             <br>
                             <h4>{{$doctor->name}}</h4>
                             <p>{{$doctor->specialization}}</p>

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class DoctorAdminController extends Controller
 {
@@ -42,12 +43,18 @@ class DoctorAdminController extends Controller
             'specialization' => 'required',
             'education' => 'required',
             'office_number' => 'required',
+            'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:2048',
             'email' => 'required|email|unique:users',
             'username' => 'required|alpha_num|unique:users',
             'password' => 'required|min:3',
             'role' => 'required',
         ], $messages);
         try {
+            if($request->hasFile('image')) {
+                $data['image'] = $request->file("image")->store('img', 'public');
+            } else {
+                $data['image'] = null;
+            }
             //use Illuminate\Support\Facades\DB;
             DB::beginTransaction();
 
@@ -65,8 +72,8 @@ class DoctorAdminController extends Controller
                 'specialization' => $data['specialization'],
                 'education' => $data['education'],
                 'office_number' => $data['office_number'],
+                'image' => $data['image'],
             ]);
-
             DB::commit();
             return redirect()->route('doctoradmin.index')->with("successMessage", "Tambah data sukses");
         } catch (\Throwable $th) {
@@ -108,16 +115,26 @@ class DoctorAdminController extends Controller
             'specialization' => 'required',
             'education' => 'required',
             'office_number' => 'required',
+            'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:2048',
             'email' => 'required|email|unique:users',
             'username' => 'required|alpha_num|unique:users',
             'password' => 'required|min:3',
             'role' => 'required',
         ], $messages);
+        try {
+            if($request->hasFile('image')) {
+                $data['image'] = $request->file("image")->store('img', 'public');
+            } else {
+                $data['image'] = null;
+            }
 
         $doctor = Doctor::findOrFail($id);
         $doctor->update($data);
 
         return redirect()->route('doctoradmin.index')->with("successMessage", "Edit data sukses");
+        } catch (\Throwable $th) {
+            return redirect()->route('doctoradmin.index')->with("errorMessage", "Edit data sukses");
+         }
     }
 
 

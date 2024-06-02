@@ -80,13 +80,8 @@
                 <a href="{{ URL::to('schedules') }}">Schedules</a>
               </li>
               </ul>
-<<<<<<< HEAD
               <a href="{{ URL::to('configuration') }}">Configuration</a>
-=======
-              <li>
-              <a href="{{ URL::to('configuration') }}">Configuration</a>
-              </li>
->>>>>>> fikri/master
+
           <li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf

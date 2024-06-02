@@ -11,11 +11,7 @@ class ConfigurationController extends Controller
     public function index()
     {
         $configurations = Configuration::all();
-<<<<<<< HEAD
-        return view('admin.configuration.index', ['title' => 'configurations', 'configurations' => $configurations]);
-=======
         return view('configuration.index', ['title' => 'configurations', 'configurations' => $configurations]);
->>>>>>> fikri/master
     }
 
     public function create()
