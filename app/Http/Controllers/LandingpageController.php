@@ -11,12 +11,14 @@ class LandingpageController extends Controller
 {
     public function index()
     {
-        
+        $data = [
+            "doctors" => Doctor::get(),
+        ];
         $doctorsCount = Doctor::count();
         $patientCount = Patient::count();
         $adminCount = User::where('role', 'admin')->orWhere('role', 'superadmin')->count();
 
-        return view('dashboard.index', compact('adminCount', 'doctorsCount', 'patientCount'));
+        return view('dashboard.index', $data,compact('adminCount', 'doctorsCount', 'patientCount'));
         // $data = [
         //     "title" => "Dashboard",
         // ];
