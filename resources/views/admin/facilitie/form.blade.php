@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-12">
             <div class="form-group">
-                <label class="font-weight-bold">facility_name</label>
+                <label class="font-weight-bold">Facilities Name</label>
                 <input type="text" class="form-control @error('facility_name') is-invalid @enderror" name="facility_name" value="{{ old('facility_name') }}">
             
                 <!-- error message untuk facility_name -->
@@ -22,7 +22,7 @@
             </div>
 
             <div class="form-group">
-                <label class="font-weight-bold">description</label>
+                <label class="font-weight-bold">Description</label>
                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="5">{{ old('description') }}</textarea>
             
                 <!-- error message untuk description -->

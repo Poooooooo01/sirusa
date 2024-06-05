@@ -26,7 +26,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Pasien</h5>
                         <p class="card-text">Login sebagai pasien untuk mengakses layanan kesehatan.</p>
-                        <a href="#" class="btn btn-primary">Login Pasien</a>
+                        <a href="{{ URL::to('login/patient') }}" class="btn btn-primary">Login Pasien</a>
                     </div>
                 </div>
             </div>

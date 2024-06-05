@@ -35,4 +35,9 @@ class Consultation extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
+
+    public function telemedicines()
+    {
+        return $this->hasMany(Telemedicine::class);
+    }
 }

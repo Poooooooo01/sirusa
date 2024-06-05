@@ -24,7 +24,7 @@
             <th>Consultation Date</th>
             <th>Status</th>
             <th>Notes</th>
-            <th width="10%">Action</th>
+            <th width="15%">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -36,15 +36,17 @@
                 <td>{{ $consultation->consultation_date }}</td>
                 <td>{{ $consultation->status }}</td>
                 <td>{{ $consultation->notes }}</td>
-                <td class="align-middle text-center">
+                <td class="align-middle">
                     <div class="d-flex justify-content-center">
                         <a href="{{ route('consultation.show', $consultation->id) }}"
-                            class="btn btn-sm btn-info mr-2">Show</a>
+                            class="btn btn-info btn-sm mr-2">Show</a>
+                        <a href="{{ route('telemedicine.indexByConsultation', $consultation->id) }}"
+                            class="btn btn-primary btn-sm mr-2">Telemedicine</a>
 
                         <form action="{{ route('consultation.destroy', $consultation->id) }}" method="post">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-sm btn-danger"
+                            <button type="submit" class="btn btn-danger btn-sm"
                                 onclick="return confirm('Are you sure you want to delete this consultation?')">Delete</button>
                         </form>
                     </div>

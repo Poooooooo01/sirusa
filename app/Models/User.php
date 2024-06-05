@@ -26,10 +26,10 @@ class User extends Authenticatable
 
     protected $dates = ['deleted_at'];
 
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = Hash::make($password);
-    }
+    // public function setPasswordAttribute($password)
+    // {
+    //     $this->attributes['password'] = Hash::make($password);
+    // }
 
     public function patient()
     {

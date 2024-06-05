@@ -16,6 +16,11 @@ class Configuration extends Model
         'hospital_name',
         'phone_number',
         'address',
+        'service_text',
+        'doctor_text',
+        'about_text',
+        'email',
+        'about_youtube_link',
     ];
 
     const CREATED_AT = 'created_at';

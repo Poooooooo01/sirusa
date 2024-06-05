@@ -28,6 +28,8 @@ class DoctorAdminController extends Controller
 
     public function store(Request $request)
     {
+        $doctor = new Doctor();
+        // $doctor->name = $request->input('name');
         $messages = [
             'nik.required' => 'Harap isi NIK dengan benar.',
             'nik.unique' => 'NIK sudah terdaftar.',
@@ -116,9 +118,12 @@ class DoctorAdminController extends Controller
             'education' => 'required',
             'office_number' => 'required',
             'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:2048',
+
+
             'email' => 'required|email|unique:users',
             'username' => 'required|alpha_num|unique:users',
             'password' => 'required|min:3',
+
             'role' => 'required',
         ], $messages);
         try {

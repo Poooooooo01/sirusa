@@ -15,7 +15,6 @@ class Telemedicine extends Model
     protected $fillable = [
         'service_name',
         'description',
-        'price',
         'consultation_id'
     ];
 
@@ -27,5 +26,10 @@ class Telemedicine extends Model
     public function consultation()
     {
         return $this->belongsTo(Consultation::class);
+    }
+
+    public function details()
+    {
+        return $this->hasMany(TelemedicineDetail::class);
     }
 }

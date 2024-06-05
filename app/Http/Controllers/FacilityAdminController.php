@@ -24,7 +24,6 @@ class FacilityAdminController extends Controller
         $messages = [
             'facility_name.required' => 'Tolong isi facility_name dengan benar.',
             'description.required' => 'Isi description dengan benar.',
-
         ];
 
         $data = $request->validate([
@@ -32,9 +31,12 @@ class FacilityAdminController extends Controller
             'description' => 'required',
         ], $messages);
 
-        Facility::create($data);
-
-        return redirect()->route('facilitie.index')->with("successMessage", "Add data sukses");
+        try {
+            Facility::create($data);
+            return redirect()->route('facilitie.index')->with("successMessage", "Add data sukses");
+        } catch (\Throwable $th) {
+            return back()->withInput()->withErrors($messages);
+        }
     }
 
     public function show($id)
@@ -54,7 +56,6 @@ class FacilityAdminController extends Controller
         $messages = [
             'facility_name.required' => 'Tolong isi facility_name dengan benar.',
             'description.required' => 'Isi description dengan benar.',
-
         ];
 
         $data = $request->validate([
@@ -64,16 +65,10 @@ class FacilityAdminController extends Controller
 
         try {
             $facilitie = Facility::findOrFail($id);
-
-            if (!$request->filled('password')) {
-                unset($data['password']);
-            }
-
             $facilitie->update($data);
-
             return redirect()->route('facilitie.index')->with("successMessage", "Edit data success");
         } catch (\Throwable $th) {
-            return redirect()->route('facilitie.index')->with("errorMessage", $th->getMessage());
+            return back()->withInput()->withErrors($messages);
         }
     }
 
