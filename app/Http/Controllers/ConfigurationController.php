@@ -30,7 +30,12 @@ class ConfigurationController extends Controller
         $data = $request->validate([
             'hospital_name' => 'required',
             'phone_number' => 'required',
-            'address' => 'required'
+            'address' => 'required',
+            'email' => 'required|email|unique:users',
+            'service_text' => 'required',
+            'doctor_text' => 'required',
+            'about_text' => 'required',
+            'about_youtube_link' => 'required',
         ], $messages);
 
         Configuration::create($data);
@@ -61,7 +66,12 @@ class ConfigurationController extends Controller
         $data = $request->validate([
             'hospital_name' => 'required',
             'phone_number' => 'required',
-            'address' => 'required'
+            'address' => 'required',
+            'email' => 'required|email|unique:users,email,',
+            'service_text' => 'required',
+            'doctor_text' => 'required',
+            'about_text' => 'required',
+            'about_youtube_link' => 'required',
         ], $messages);
 
         $configuration = Configuration::findOrFail($id);

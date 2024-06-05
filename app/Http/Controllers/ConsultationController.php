@@ -29,7 +29,7 @@ class ConsultationController extends Controller
             'patient_id' => 'required|exists:patients,id',
             'doctor_id' => 'required|exists:doctors,id',
             'consultation_date' => 'required|date',
-            'status' => 'required|in:completed,scheduled,canceled',
+            'status' => 'required|in:completed,scheduled,canceled,offering,rejected',
             'notes' => 'nullable|string',
         ]);
 

@@ -39,6 +39,8 @@ class UserAdminController extends Controller
             'role' => 'required',
         ], $messages);
 
+        $data['password'] = Hash::make($data['password']); // Hash the password
+
         User::create($data);
 
         return redirect()->route('useradmin.index')->with("successMessage", "Add data sukses");
@@ -78,7 +80,9 @@ class UserAdminController extends Controller
         try {
             $user = User::findOrFail($id);
 
-            if (!$request->filled('password')) {
+            if ($request->filled('password')) {
+                $data['password'] = Hash::make($data['password']); // Hash the password
+            } else {
                 unset($data['password']);
             }
 

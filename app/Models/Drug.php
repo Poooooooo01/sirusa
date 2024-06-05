@@ -10,11 +10,16 @@ class Drug extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'drug';  // Correct table name
+    protected $table = 'drugs';  // Correct table name
 
     protected $fillable = [
+        'id',
+        'drug_name',
+        'brand_id',
         'description',
         'category_id',
+        'price',
+        'image',
     ];
 
     const CREATED_AT = 'created_at';
@@ -25,5 +30,10 @@ class Drug extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
     }
 }

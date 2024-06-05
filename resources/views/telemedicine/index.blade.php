@@ -13,7 +13,10 @@
     </div>
 @endif
 
-<a href="{{ route('telemedicine.create') }}" class="btn btn-success mb-3">Add</a>
+<h2>Telemedicine for Consultation with {{ $consultation->patient->nama }} and Dr. {{ $consultation->doctor->name }}</h2>
+
+<a href="{{ route('telemedicine.createFromConsultation', $consultation->id) }}" class="btn btn-primary btn-sm mr-2">Telemedicine</a>
+<br><br>
 <table id="datatable1" class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -21,8 +24,8 @@
             <th>Service Name</th>
             <th>Description</th>
             <th>Doctor</th>
-            <th>Price</th>
-            <th width="10%">Action</th>
+            <th>Patient</th>
+            <th width="15%">Action</th> <!-- Adjusted width to give more space for buttons -->
         </tr>
     </thead>
     <tbody>
@@ -32,13 +35,12 @@
                 <td>{{ $telemedicine->service_name }}</td>
                 <td>{{ $telemedicine->description }}</td>
                 <td>{{ $telemedicine->consultation->doctor->name }}</td>
-                <td>{{ $telemedicine->price }}</td>
+                <td>{{ $telemedicine->consultation->patient->nama }}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">
-                        <a href="{{ URL::to('telemedicine/' .$telemedicine->id) }}" class="btn btn-sm btn-info mr-2">Show</a>
-                        <a href="{{ URL::to('telemedicine/' .$telemedicine->id). '/edit' }}" class="btn btn-sm btn-warning mr-2">Edit</a>
-
-                        <form action="{{ URL::to('telemedicine/' .$telemedicine->id) }}" method="post">
+                        <a href="{{ URL::to('telemedicine/' . $telemedicine->id) . '/edit' }}" class="btn btn-sm btn-warning mr-1">Edit</a>
+                        <a href="{{ route('telemedicine.details', $telemedicine->id) }}" class="btn btn-sm btn-secondary mr-1">Detail</a>
+                        <form action="{{ URL::to('telemedicine/' . $telemedicine->id) }}" method="post" class="d-inline">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin mau menghapus data ini {{ $telemedicine->name }} ?')">Delete</button>
@@ -47,9 +49,13 @@
                 </td>
             </tr>
         @endforeach
+
+        @if ($telemedicines->isEmpty())
+            <tr>
+                <td colspan="6" class="text-center">No data available</td>
+            </tr>
+        @endif
     </tbody>
 </table>
-
-
 
 @endsection

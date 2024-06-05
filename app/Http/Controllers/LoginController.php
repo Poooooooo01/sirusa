@@ -29,12 +29,18 @@ class LoginController extends Controller
         $user = User::where('username', $request->username)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
-            Auth::login($user);
-            return redirect()->intended(route('admin.index')); // Use named route
+            // Check if user role is admin or superadmin
+            if ($user->role == 'admin' || $user->role == 'superadmin') {
+                Auth::login($user);
+                return redirect()->intended(route('admin.index')); // Use named route
+            } else {
+                return back()->with('error', 'Tempatmu bukan disini');
+            }
         } else {
             return back()->with('error', 'Invalid username or password');
         }
     }
+
 
     public function logout(Request $request)
     {

@@ -22,6 +22,11 @@
             <th>Hospital Name</th>
             <th>Phone Number</th>
             <th>Alamat</th>
+            <th>Email</th>
+            <th>Service Teks</th>
+            <th>Doktor Teks</th>
+            <th>About Teks</th>
+            <th>About Youtube Link</th>
             <th width="100px">Action</th>
         </tr>
     </thead>
@@ -32,6 +37,11 @@
             <td>{{ $configuration->hospital_name }}</td>
             <td>{{ $configuration->phone_number }}</td>
             <td>{{ $configuration->address }}</td>
+            <td>{{ $configuration->email }}</td>
+            <td>{{ $configuration->service_text }}</td>
+            <td>{{ $configuration->doctor_text }}</td>
+            <td>{{ $configuration->about_text }}</td>
+            <td>{{ $configuration->about_youtube_link}}</td>
             <td>
                 <div class="d-flex">
                     <a href="{{ route('configuration.show', $configuration->id) }}" class="btn btn-sm btn-info mr-2">Show</a>

@@ -44,6 +44,8 @@
                     <option value="completed" {{ isset($consultation) && $consultation->status === 'completed' ? 'selected' : '' }}>Completed</option>
                     <option value="scheduled" {{ isset($consultation) && $consultation->status === 'scheduled' ? 'selected' : '' }}>Scheduled</option>
                     <option value="canceled" {{ isset($consultation) && $consultation->status === 'canceled' ? 'selected' : '' }}>Canceled</option>
+                    <option value="offering" {{ isset($consultation) && $consultation->status === 'offering' ? 'selected' : '' }}>Offering</option>
+                    <option value="rejected" {{ isset($consultation) && $consultation->status === 'rejected' ? 'selected' : '' }}>Rejected</option>
                 </select>
             </div>
             <div class="form-group">
