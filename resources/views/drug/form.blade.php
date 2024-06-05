@@ -52,29 +52,52 @@
                 @enderror
             </div>
             <div class="form-group">
+
                 <label for="price">Price</label>
                 <input type="text" id="price" name="price"
                     class="form-control @error('price') is-invalid @enderror"
                     value="{{ isset($drug) ? $drug->price : old('price') }}">
                 @error('price')
+
+                <label for="image">Image</label>
+                <input type="file" id="image" name="image" class="form-control @error('image')is-invalid @enderror"
+                value="{{ isset($drug)? $drug->image : old('image') }}">
+                @error('image')
+
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
+
             </div>
             <div class="form-group">
                 <label for="">Image</label>
                 <input type="file" name="image" id="image" class="form-control @error('image') is-invalid
                 @enderror" placeholder="Image">
                 @error('image')
+
+
+                @if (@isset($menu))
+                    <img src="{{ URL::to('storage/'. $drug->image) }}" alt="image" width="20%">
+                @endif
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" class="form-control @error('price')is-invalid @enderror"
+                value="{{ isset($menu)? $menu->price : old('price') }}">
+                @error('price')
+
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                 @enderror
 
+
                 @if(isset($drug))
                     <img src="{{ URL::to('storage/' . $drug->image) }}" width="20%" alt="">
                 @endif
+
+
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
             <a href="{{ route('drug.index') }}" class="btn btn-secondary">Back</a>

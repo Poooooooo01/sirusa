@@ -49,6 +49,7 @@
 
 <body>
 
+
     <div class="wrapper d-flex align-items-stretch">
         <nav id="sidebar">
             <div class="p-4 pt-5">
@@ -61,6 +62,86 @@
                         </a>
                     </li>
                     <li>
+
+  <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+      <div class="p-4 pt-5">
+        <a href="{{ URL::to('admin') }}" class="img logo rounded-circle mb-5"
+          style="background-image: url(images/logo.jpg);"></a>
+        <ul class="list-unstyled components mb-5">
+          <li>
+            <a href="{{ URL::to('admin') }}" class="nav-link {{ Request::is('admin') ? ' active' : '' }}">Home</a>
+          </li>
+          <li>
+            <a href="{{ URL::to('health') }}" class="nav-link {{ Request::is('health') ? ' active' : '' }}">Health Information</a>
+          </li>
+          <li>
+            <a href="{{ URL::to('facilitie') }}" class="nav-link {{ Request::is('facilitie') ? ' active' : '' }}">Facilities</a>
+          </li>
+          <li>
+            <a href="#peopleSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">People</a>
+            <ul class="collapse list-unstyled" id="peopleSubmenu">
+              <li>
+                <a href="{{ URL::to('useradmin') }}">User</a>
+              </li>
+              <li>
+                <a href="{{ URL::to('doctoradmin') }}">Doctor</a>
+              </li>
+              <li>
+                <a href="{{ URL::to('patientadmin') }}">Patient</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#appointmentSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Appointment</a>
+            <ul class="collapse list-unstyled" id="appointmentSubmenu">
+              <li>
+                <a href="{{ URL::to('consultation') }}">Consultations</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#telemedicineSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Telemedicine</a>
+            <ul class="collapse list-unstyled" id="telemedicineSubmenu">
+              <li>
+                <a href="{{ URL::to('telemedicine') }}">Telemedicine</a>
+              </li>
+              <li>
+                <a href="{{ URL::to('drug') }}">Drug</a>
+              </li>
+              <li>
+                <a href="{{ URL::to('category') }}">Category</a>
+              </li>
+              <li>
+                <a href="#">Payment</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#doctorSubmenu" data-toggle="collapse" aria-expanded="false"
+              class="dropdown-toggle">Doctor</a>
+            <ul class="collapse list-unstyled" id="doctorSubmenu">
+              <li>
+                <a href="{{ URL::to('schedules') }}">Schedules</a>
+              </li>
+              </ul>
+              <a href="{{ URL::to('configuration') }}">Configuration</a>
+
+          <li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              Log-Out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
 
                     </li>
                     <li>

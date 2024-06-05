@@ -76,19 +76,42 @@
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="">Drop Down 2</a></li>
+              <li><a href="">Drop Down 3</a></li>
+              <li><a href="">Drop Down 4</a></li>
             </ul>
+
           </li> --}}
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                     {{-- </ul> --}}
                     <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
+          </li>
+          <li><a class="nav-link scrollto" href="contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="{{ URL::to('login') }}" class="appointment-btn scrollto">Login</a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <h1>Welcome to Medilab</h1>
+      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div>
+  </section><!-- End Hero -->
+
+
             <a href="{{ URL::to('login') }}" class="appointment-btn scrollto">Login</a>
 
         </div>
+
     </header><!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
@@ -97,6 +120,91 @@
             <h1>Welcome to Sirusa</h1>
             <h2>We are team of talented designers making websites with Bootstrap</h2>
             <a href="#about" class="btn-get-started scrollto">Get Started</a>
+
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
+            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-fingerprint"></i></div>
+              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-gift"></i></div>
+              <h4 class="title"><a href="">Nemo Enim</a></h4>
+              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-atom"></i></div>
+              <h4 class="title"><a href="">Dine Pad</a></h4>
+              <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+
+
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="count-box text-center p-4">
+          <i class="fas fa-user-md fa-3x mb-3"></i>
+          <span data-purecounter-start="0" data-purecounter-end="{{ $doctorsCount }}" data-purecounter-duration="1" class="purecounter display-4"></span>
+          <p class="mt-2">@lang('Doctors')</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="count-box text-center p-4">
+        <i class="fas fa-user-injured fa-3x mb-3"></i>
+          <span data-purecounter-start="0" data-purecounter-end="{{ $patientCount }}" data-purecounter-duration="1" class="purecounter display-4"></span>
+          <p class="mt-2">@lang('Patients')</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="count-box text-center p-4">
+        <i class="fas fa-user-tie fa-3x mb-3"></i>
+          <span data-purecounter-start="0" data-purecounter-end="{{ $adminCount }}" data-purecounter-duration="1" class="purecounter display-4"></span>
+          <p class="mt-2">@lang('Employes')</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section><!-- End Counts Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+
         </div>
     </section><!-- End Hero -->
 
@@ -447,6 +555,7 @@
       </div>
     </section><!-- End Departments Section --> --}}
 
+
         <!-- ======= Doctors Section ======= -->
         <section id="doctors" class="doctors">
             <div class="container">
@@ -492,49 +601,48 @@
                   <a href=""><i class="ri-facebook-fill"></i></a>
                   <a href=""><i class="ri-instagram-fill"></i></a>
                   <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Cardiology</span>
-                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+    <!-- ======= Doctors Section ======= -->
+    <section id="doctors" class="doctors">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading text-center">
+                        <h2>Doctors</em></h2>
+                        <p>Rumah Sakit Terpadu</p>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+            <div class="row">
+            @foreach ($doctors as $index => $doctor )
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb text-center">
+                            <img class="image-thumb" src="{{asset('storage/' . $doctor->image)}}" alt="">
+                        </div>
+                        <div class="down-content text-center">
+                            <br>
+                            <h4>{{$doctor->name}}</h4>
+                            <p>{{$doctor->specialization}}</p>
+                            <p>{{$doctor->education}}</p>
+                        </div>
+                    </div>
 
-          <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Neurosurgeon</span>
-                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
-              </div>
+                @endforeach
             </div>
-          </div>
-
         </div>
+
 
       </div>
     </section><!-- End Doctors Section --> --}}
+
+    </section><!-- End Doctors Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container">
+
 
         <!-- ======= Frequently Asked Questions Section ======= -->
         <section id="faq" class="faq section-bg">
