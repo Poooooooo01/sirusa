@@ -1,9 +1,8 @@
 @extends('layouts.sidebar')
 @section('container')
 
-<form method="post"
-    action="{{ isset($doctor) ? route('doctoradmin.update', $doctor->id) : route('doctoradmin.store') }}"
-    autocomplete="off">
+<form method="post" action="{{ isset($doctor) ? route('doctoradmin.update', $doctor->id) : route('doctoradmin.store') }}"
+    autocomplete="off" enctype="multipart/form-data">
     @csrf
     @if (isset($doctor))
         @method('put')
@@ -61,10 +60,24 @@
                     </div>
                 @enderror
             </div>
+            <div class="form-group">
+                <label for="">Image</label>
+                <input type="file" name="image" id="image" class="form-control @error('image') is-invalid
+                @enderror" placeholder="Image">
+                @error('image')
+                    <div class="invalid-feedback">
+                    {{ $message }}
+                    </div>
+                @enderror
+
+                @if(isset($doctor))
+                    <img src="{{ URL::to('storage/' .$doctor->image) }}"  width="20%" alt="">
+                @endif
+            </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" 
+                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror"
                        value="{{ isset($user) ? $user->email : old('email') }}">
                 @error('email')
                 <div class="invalid-feedback">
@@ -74,7 +87,7 @@
             </div>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror" 
+                <input type="text" id="username" name="username" class="form-control @error('username') is-invalid @enderror"
                        value="{{ isset($user) ? $user->username : old('username') }}">
                 @error('username')
                 <div class="invalid-feedback">
@@ -91,10 +104,10 @@
                 </div>
                 @enderror
             </div>
-            
-            <input type="hidden" name="role" value="pasien">
+
+            <input type="hidden" name="role" value="dokter">
             <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
-            <a href="{{ route('patientadmin.index') }}" class="btn btn-sm btn-secondary">Kembali</a>
+            <a href="{{ route('doctoradmin.index') }}" class="btn btn-sm btn-secondary">Kembali</a>
         </div>
     </div>
 </form>
