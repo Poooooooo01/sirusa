@@ -118,12 +118,6 @@ class DoctorAdminController extends Controller
             'education' => 'required',
             'office_number' => 'required',
             'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:2048',
-
-
-            'email' => 'required|email|unique:users',
-            'username' => 'required|alpha_num|unique:users',
-            'password' => 'required|min:3',
-
             'role' => 'required',
         ], $messages);
         try {

@@ -82,6 +82,16 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="reason">Reason Teks</label>
+                <input type="text" id="reason" name="reason" class="form-control @error('reason') is-invalid @enderror"
+                    value="{{ isset($configuration) ? $configuration->reason : old('reason') }}">
+                @error('reason')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="about_youtube_link">Youtube</label>
                 <input type="text" id="about_youtube_link" name="about_youtube_link" class="form-control @error('about_youtube_link') is-invalid @enderror"
                     value="{{ isset($configuration) ? $configuration->about_youtube_link : old('about_youtube_link') }}">

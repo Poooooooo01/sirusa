@@ -2,43 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HomeDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
-use App\Models\Configuration; // Menambahkan use statement untuk model Doctor
-use App\Models\Facility; // Menambahkan use statement untuk model Doctor
-use App\Models\Doctor; // Menambahkan use statement untuk model Doctor
+use App\Models\Configuration;
+use App\Models\Facility;
+use App\Models\Doctor;
 use App\Models\Faq;
-use App\Models\Patient; // Menambahkan use statement untuk model Patient
-use App\Models\User; // Menambahkan use statement untuk model User
+use App\Models\Patient;
+use App\Models\User;
 use App\Models\AboutDetail;
+use App\Models\Galleries; // Tambahkan model Galleries
+use App\Models\Testimonials;
+use App\Models\Report;
 
 class LandingpageController extends Controller
 {
     public function index()
     {
-
         $faqs = Faq::all();
         $aboutDetails = AboutDetail::all();
         $configurations = Configuration::all();
         $doctors = Doctor::all();
+        $homeDetails = HomeDetail::all();
         $facilities = Facility::all();
-
-        $data = [
-            "doctors" => Doctor::get(),
-        ];
-
         $doctorsCount = Doctor::count();
         $patientCount = Patient::count();
         $adminCount = User::where('role', 'admin')->orWhere('role', 'superadmin')->count();
+        $galleries = Galleries::all();
+        $testimonials = Testimonials::all();
 
-
-        return view('dashboard.index', compact('adminCount', 'doctorsCount', 'patientCount', 'doctors', 'facilities', 'configurations', 'faqs', 'aboutDetails'));
-
-        return view('dashboard.index', $data,compact('adminCount', 'doctorsCount', 'patientCount'));
-
-        // $data = [
-        //     "title" => "Dashboard",
-        // ];
-        // return view("dashboard.index", $data);
+        return view('dashboard.index', compact('adminCount', 'doctorsCount', 'patientCount', 'doctors', 'facilities', 'configurations', 'faqs', 'aboutDetails', 'homeDetails', 'testimonials', 'galleries'));
     }
 }

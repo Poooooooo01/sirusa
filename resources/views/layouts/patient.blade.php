@@ -44,10 +44,10 @@
   <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar">
       <div class="p-4 pt-5">
-        <a href="{{ URL::to('admin') }}" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
         <ul class="list-unstyled components mb-5">
         <li>
-            <a href="{{ URL::to('patient') }}" class="nav-link {{ Request::is('patient') ? ' active' : '' }}">
+            <a href="#">
               <i class="fas fa-home"></i> Home
             </a>
           </li>
@@ -57,27 +57,14 @@
             </a>
           </li>
           <li>
+            <a href="{{ URL::to('appointment') }}" class="nav-link">
+              <i class="fas fa-calendar-check"></i> Appointment
+            </a>
+          </li>
           <li>
-            <a href="#configurationSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <i class="fa fa-archive" aria-hidden="true"></i> Archieve
+            <a href="{{ route('testimonial.create') }}" class="nav-link">
+              <i class="fas fa-comment"></i> Testimoni
             </a>
-            <ul class="collapse list-unstyled" id="configurationSubmenu">
-              <li>
-              <a href="{{ URL::to('health') }}" class="nav-link {{ Request::is('health') ? ' active' : '' }}">
-              <i class="fas fa-heartbeat"></i> Health Information
-            </a>
-            </li>
-            <li>
-            <a href="{{ URL::to('configuration') }}"><i class="fas fa-cogs"></i> Configuration</a>
-            </li>
-            <a href="{{ URL::to('facilitie') }}" class="nav-link {{ Request::is('facilitie') ? ' active' : '' }}">
-              <i class="fas fa-hospital"></i> Facilities
-            </a>
-            <a href="{{ URL::to('brand') }}" class="nav-link {{ Request::is('brand') ? ' active' : '' }}">
-              <i class="fas fa-eye"></i> Brand
-            </a>
-              </li>
-            </ul>
           </li>
           <li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

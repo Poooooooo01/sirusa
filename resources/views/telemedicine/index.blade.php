@@ -20,17 +20,12 @@
 <table id="datatable1" class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th width="5%">Id.</th>
+            <th width="5%">#</th>
             <th>Service Name</th>
             <th>Description</th>
             <th>Doctor</th>
-
             <th>Patient</th>
             <th width="15%">Action</th> <!-- Adjusted width to give more space for buttons -->
-
-            <th>price</th>
-            <th width="10%">Action</th>
-
         </tr>
     </thead>
     <tbody>
@@ -62,9 +57,5 @@
         @endif
     </tbody>
 </table>
-
-
-
-
 
 @endsection

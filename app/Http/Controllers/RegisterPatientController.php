@@ -60,7 +60,7 @@ class RegisterPatientController extends Controller
             ]);
 
             DB::commit();
-            return redirect()->route('login')->with("successMessage", "Tambah data sukses");    
+            return redirect()->route('login')->with("successMessage", "Selamat Proses Register Anda Sukses");    
         } catch (\Throwable $th) {
             DB::rollback();            
             return redirect()->route('patient.index')->with("errorMessage", $th->getMessage());

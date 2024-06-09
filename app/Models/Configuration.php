@@ -19,6 +19,7 @@ class Configuration extends Model
         'service_text',
         'doctor_text',
         'about_text',
+        'reason',
         'email',
         'about_youtube_link',
     ];

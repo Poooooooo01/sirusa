@@ -38,6 +38,39 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    .gallery-img {
+        width: 100%;
+        height: 200px; /* Atau ukuran lain yang diinginkan */
+        object-fit: cover;
+    }
+
+    .gallery-item {
+        overflow: hidden; /* Menyembunyikan bagian gambar yang melebihi ukuran kontainer */
+    }
+
+    .pic-container {
+    width: 100%;
+    height: 250px; /* Adjust height as needed */
+    background-color: rgba(240, 240, 240, 0.7); /* Transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    }
+    .doctor-img {
+        width: calc(100% - 120px); /* Adjusted width to account for the border */
+        height: calc(100% - 120px); /* Adjusted height to account for the border */
+        object-fit: contain; /* Ensures the entire image fits within the container without being cut off */
+        border: 40px solid rgba(221, 221, 221, 0.7); /* Transparent border */
+    }
+    .member {
+        margin-bottom: 20px;
+    }
+
+</style>
+
 </head>
 
 <body>
@@ -52,8 +85,8 @@
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
-
-            <h1 class="logo me-auto"><a href="index.html">SIRUSA</a></h1>
+        @foreach ($configurations as $config)
+        <h1 class="logo me-auto"><a href="index.html">{{ $config->hospital_name }}</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -76,135 +109,28 @@
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li>
-              <li><a href="">Drop Down 2</a></li>
-              <li><a href="">Drop Down 3</a></li>
-              <li><a href="">Drop Down 4</a></li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
             </ul>
-
           </li> --}}
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                     {{-- </ul> --}}
                     <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
-          </li>
-          <li><a class="nav-link scrollto" href="contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <a href="{{ URL::to('login') }}" class="appointment-btn scrollto">Login</a>
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container">
-      <h1>Welcome to Medilab</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a>
-    </div>
-  </section><!-- End Hero -->
-
-
             <a href="{{ URL::to('login') }}" class="appointment-btn scrollto">Login</a>
 
         </div>
-
     </header><!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
-            <h1>Welcome to Sirusa</h1>
-            <h2>We are team of talented designers making websites with Bootstrap</h2>
+        <h1>Welcome to {{ $config->hospital_name }}</h1>
+        @endforeach
+        <h2>We will fight with angel of the death</h2>
             <a href="#about" class="btn-get-started scrollto">Get Started</a>
-
-
-      </div>
-    </section><!-- End Why Us Section -->
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container-fluid">
-
-        <div class="row">
-          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
-          </div>
-
-          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
-
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-fingerprint"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-            </div>
-
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-gift"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-atom"></i></div>
-              <h4 class="title"><a href="">Dine Pad</a></h4>
-              <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts py-5">
-  <div class="container">
-    <div class="row justify-content-center">
-
-
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="count-box text-center p-4">
-          <i class="fas fa-user-md fa-3x mb-3"></i>
-          <span data-purecounter-start="0" data-purecounter-end="{{ $doctorsCount }}" data-purecounter-duration="1" class="purecounter display-4"></span>
-          <p class="mt-2">@lang('Doctors')</p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="count-box text-center p-4">
-        <i class="fas fa-user-injured fa-3x mb-3"></i>
-          <span data-purecounter-start="0" data-purecounter-end="{{ $patientCount }}" data-purecounter-duration="1" class="purecounter display-4"></span>
-          <p class="mt-2">@lang('Patients')</p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="count-box text-center p-4">
-        <i class="fas fa-user-tie fa-3x mb-3"></i>
-          <span data-purecounter-start="0" data-purecounter-end="{{ $adminCount }}" data-purecounter-duration="1" class="purecounter display-4"></span>
-          <p class="mt-2">@lang('Employes')</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section><!-- End Counts Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-
         </div>
     </section><!-- End Hero -->
 
@@ -217,15 +143,9 @@
                 <div class="row">
                     <div class="col-lg-4 d-flex align-items-stretch">
                         <div class="content">
-                            @foreach ($configurations as $configuration )
-                            <h3>Why Choose {{ $configuration->hospital_name }}?</h3>
-                            @endforeach
-
+                            <h3>Why Choose {{ $config->hospital_name }}?</h3>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus
-                                optio ad corporis.
+                                {{ $config->reason }}
                             </p>
                             <div class="text-center">
                                 <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
@@ -235,30 +155,30 @@
                     <div class="col-lg-8 d-flex align-items-stretch">
                         <div class="icon-boxes d-flex flex-column justify-content-center">
                             <div class="row">
+                                @foreach ($homeDetails as $home)
                                 <div class="col-xl-4 d-flex align-items-stretch">
-                                    <div class="icon-box mt-4 mt-xl-0">
-                                        <i class="bx bx-receipt"></i>
-                                        <h4>Corporis voluptates sit</h4>
-                                        <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
-                                            aliquip</p>
+                                        <div class="icon-box mt-4 mt-xl-0">
+                                            @switch($home->id)
+                                                @case(1)
+                                                    <i class="bx bx-receipt"></i>
+                                                @break
+
+                                                @case(2)
+                                                    <i class="bx bx-cube-alt"></i>
+                                                @break
+
+                                                @case(3)
+                                                <i class="bx bx-images"></i>
+                                                @break
+
+                                                @default
+                                                <i class="bx bx-default-icon"></i>
+                                            @endswitch
+                                            <h4>{{ $home->title }}</h4>
+                                            <p>{{ $home->description }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 d-flex align-items-stretch">
-                                    <div class="icon-box mt-4 mt-xl-0">
-                                        <i class="bx bx-cube-alt"></i>
-                                        <h4>Ullamco laboris ladore pan</h4>
-                                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                            deserunt</p>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 d-flex align-items-stretch">
-                                    <div class="icon-box mt-4 mt-xl-0">
-                                        <i class="bx bx-images"></i>
-                                        <h4>Labore consequatur</h4>
-                                        <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis
-                                            facere</p>
-                                    </div>
-                                </div>
+                                    @endforeach
                             </div>
                         </div><!-- End .content-->
                     </div>
@@ -271,18 +191,18 @@
         <section id="about" class="about">
             <div class="container-fluid">
                 @foreach ($configurations as $configuration)
-                    <div class="row">
-                    @php
+                @php
                 // Ekstrak ID video dari link YouTube
                 preg_match('/(?:https?:\/\/)?(?:www\.)?youtube\.com\/.*(?:v=|\/)([a-zA-Z0-9_-]{11})/', $configuration->about_youtube_link, $matches);
                 $youtube_id = $matches[1] ?? '';
                 // Bangun URL thumbnail
                 $thumbnail_url = $youtube_id ? "https://img.youtube.com/vi/$youtube_id/hqdefault.jpg" : '';
             @endphp
-                        <div
-                            class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative" style="background-image: url('{{ $thumbnail_url }}');>
-                            <a href="{{ $configuration->about_youtube_link }}" class="glightbox play-btn mb-4"></a>
-                        </div>
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative"
+                     style="background-image: url('{{ $thumbnail_url }}'); background-size: cover; background-position: center;">
+                    <a href="{{ $configuration->about_youtube_link }}" class="glightbox play-btn mb-4"></a>
+                </div>
 
                         <div
                             class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
@@ -385,7 +305,7 @@
         </section><!-- End Services Section -->
 
         <!-- ======= Appointment Section ======= -->
-        <section id="appointment" class="appointment section-bg">
+        <!-- <section id="appointment" class="appointment section-bg">
             <div class="container">
 
                 <div class="section-title">
@@ -455,7 +375,7 @@
                 </form>
 
             </div>
-        </section><!-- End Appointment Section -->
+        </section>End Appointment Section -->
 
         <!-- ======= Departments Section ======= -->
         {{-- <section id="departments" class="departments">
@@ -555,39 +475,50 @@
       </div>
     </section><!-- End Departments Section --> --}}
 
+<!-- ======= Doctors Section ======= -->
+<section id="doctors" class="doctors">
+    <div class="container">
 
-        <!-- ======= Doctors Section ======= -->
-        <section id="doctors" class="doctors">
-            <div class="container">
+        <div class="section-title">
+            <h2>Doctors</h2>
+            @foreach ($configurations as $configuration)
+                <p>{{ $configuration->doctor_text }}</p>
+            @endforeach
+        </div>
 
-                <div class="section-title">
-                    <h2>Doctors</h2>
-                    @foreach ($configurations as $configuration)
-                        <p>{{ $configuration->doctor_text }}</p>
-                    @endforeach
-                </div>
-
-                <div class="row">
-                    @foreach ($doctors as $doctor)
-                        <div class="col-lg-6 col-md-6">
-                            <div class="member d-flex align-items-start">
-                                <div class="pic"> <a
-                                        onclick="showDetailImageModal('{{ URL::to('storage/' . $doctor->image) }}')"
-                                        class="btn btn-link" data-toggle="modal" data-target="#detailImageModal">
-                                        <img src="{{ URL::to('storage/' . $doctor->image) }}" alt="Image"
-                                            width="50%"> </a>
-                                </div>
-                                <div class = "member-info">
-                                    <h4>{{ $doctor->name }}</h4>
-                                    <span>{{ $doctor->specialization }}</span>
-                                    <p>{{ $doctor->education }}</p>
-                                </div>
-                            </div>
+        <div class="row">
+            @foreach ($doctors as $doctor)
+                <div class="col-lg-6 col-md-6">
+                    <div class="member d-flex align-items-start">
+                        <div class="pic-container">
+                            <a onclick="showDetailImageModal('{{ URL::to('storage/' . $doctor->image) }}')"
+                               class="btn btn-link" data-toggle="modal" data-target="#detailImageModal">
+                                <img src="{{ URL::to('storage/' . $doctor->image) }}" alt="Image" class="doctor-img">
+                            </a>
                         </div>
-                    @endforeach
+                        <div class="member-info">
+                            <h4>{{ $doctor->name }}</h4>
+                            <span>{{ $doctor->specialization }}</span>
+                            <p>{{ $doctor->education }}</p>
+                        </div>
+                    </div>
                 </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- Modal for Image Detail -->
+<div class="modal fade" id="detailImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="Doctor Image" class="img-fluid">
             </div>
-        </section>
+        </div>
+    </div>
+</div>
+
 
         {{-- <div class="col-lg-6 mt-4 mt-lg-0">
             <div class="member d-flex align-items-start">
@@ -601,331 +532,143 @@
                   <a href=""><i class="ri-facebook-fill"></i></a>
                   <a href=""><i class="ri-instagram-fill"></i></a>
                   <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-
-    <!-- ======= Doctors Section ======= -->
-    <section id="doctors" class="doctors">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="section-heading text-center">
-                        <h2>Doctors</em></h2>
-                        <p>Rumah Sakit Terpadu</p>
-                    </div>
                 </div>
+              </div>
             </div>
-            <div class="row">
-            @foreach ($doctors as $index => $doctor )
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb text-center">
-                            <img class="image-thumb" src="{{asset('storage/' . $doctor->image)}}" alt="">
-                        </div>
-                        <div class="down-content text-center">
-                            <br>
-                            <h4>{{$doctor->name}}</h4>
-                            <p>{{$doctor->specialization}}</p>
-                            <p>{{$doctor->education}}</p>
-                        </div>
-                    </div>
+          </div>
 
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>William Anderson</h4>
+                <span>Cardiology</span>
+                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
                 </div>
-                @endforeach
+              </div>
             </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Neurosurgeon</span>
+                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-
 
       </div>
     </section><!-- End Doctors Section --> --}}
 
-    </section><!-- End Doctors Section -->
-
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq section-bg">
-      <div class="container">
-
-
         <!-- ======= Frequently Asked Questions Section ======= -->
         <section id="faq" class="faq section-bg">
-            <div class="container">
+    <div class="container">
 
-                <div class="section-title">
-                    <h2>Frequently Asked Questions</h2>
-                    {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
+        <div class="section-title">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        @foreach ($faqs as $faq)
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="faq-list">
+                        <ul>
+                            <li data-aos="fade-up">
+                                <i class="bx bx-help-circle icon-help"></i> 
+                                <a data-bs-toggle="collapse" class="collapsed" data-bs-target="#faq-list-{{ $faq->id }}">
+                                    {{ $faq->question }} 
+                                    <i class="bx bx-chevron-down icon-show"></i>
+                                    <i class="bx bx-chevron-up icon-close"></i>
+                                </a>
+                                <div id="faq-list-{{ $faq->id }}" class="collapse" data-bs-parent=".faq-list">
+                                    <p>{{ $faq->answer }}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                @foreach ($faqs as $faq)
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="faq-list">
-                                <ul>
-                                    <li data-aos="fade-up">
-                                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                            class="collapse" data-bs-target="#faq-list-1">{{ $faq->question }} <i
-                                                class="bx bx-chevron-down icon-show"></i><i
-                                                class="bx bx-chevron-up icon-close"></i></a>
-                                        <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                                            <p>
-                                                {{ $faq->answer }}
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        {{-- <li data-aos="fade-up" data-aos-delay="100">
-                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                data-bs-target="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim
-                                nunc? <i class="bx bx-chevron-down icon-show"></i><i
-                                    class="bx bx-chevron-up icon-close"></i></a>
-                            <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                                <p>
-                                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum
-                                    velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend
-                                    donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in
-                                    cursus turpis massa tincidunt dui.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li data-aos="fade-up" data-aos-delay="200">
-                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing
-                                elit? <i class="bx bx-chevron-down icon-show"></i><i
-                                    class="bx bx-chevron-up icon-close"></i></a>
-                            <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                                <p>
-                                    Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus
-                                    pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit.
-                                    Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis
-                                    tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                                </p>
-                            </div>
-                        </li>
-
-                        <li data-aos="fade-up" data-aos-delay="300">
-                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam
-                                aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i
-                                    class="bx bx-chevron-up icon-close"></i></a>
-                            <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                                <p>
-                                    Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in
-                                    est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl
-                                    suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li data-aos="fade-up" data-aos-delay="400">
-                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare.
-                                Varius vel pharetra vel turpis nunc eget lorem dolor? <i
-                                    class="bx bx-chevron-down icon-show"></i><i
-                                    class="bx bx-chevron-up icon-close"></i></a>
-                            <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                                <p>
-                                    Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo
-                                    integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc
-                                    eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
-                                </p>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div> --}}
-                @endforeach
             </div>
-        </section><!-- End Frequently Asked Questions Section -->
+        @endforeach
+    </div>
+</section>
+
 
         <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
-            <div class="container">
-
-                <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img"
-                                        alt="">
-                                    <h3>Saul Goodman</h3>
-                                    <h4>Ceo &amp; Founder</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum
-                                        suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et.
-                                        Maecen aliquam, risus at semper.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
+    <div class="container">
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+                @foreach ($testimonials as $testimonial)
+                <div class="swiper-slide">
+                    <div class="testimonial-wrap">
+                        <div class="testimonial-item">
+                            <i class="fas fa-user testimonial-img"></i>
+                            <h3>{{ $testimonial->nama }}</h3>
+                            <div class="rating">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= $testimonial->star_rating)
+                                        <i class="fas fa-star" style="color: #ffc700;"></i>
+                                    @else
+                                        <i class="fas fa-star" style="color: #ccc;"></i>
+                                    @endif
+                                @endfor
                             </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img"
-                                        alt="">
-                                    <h3>Sara Wilsson</h3>
-                                    <h4>Designer</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum
-                                        quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat
-                                        irure amet legam anim culpa.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img"
-                                        alt="">
-                                    <h3>Jena Karlis</h3>
-                                    <h4>Store Owner</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
-                                        veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis
-                                        sint minim.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img"
-                                        alt="">
-                                    <h3>Matt Brandon</h3>
-                                    <h4>Freelancer</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
-                                        fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore
-                                        quem dolore labore illum veniam.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-wrap">
-                                <div class="testimonial-item">
-                                    <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img"
-                                        alt="">
-                                    <h3>John Larson</h3>
-                                    <h4>Entrepreneur</h4>
-                                    <p>
-                                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor
-                                        noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam
-                                        esse veniam culpa fore nisi cillum quid.
-                                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                {{ $testimonial->commentar }}
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                        </div>
                     </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
+                </div><!-- End testimonial item -->
+                @endforeach
             </div>
-        </section><!-- End Testimonials Section -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section><!-- End Testimonials Section -->
+
+
 
         <!-- ======= Gallery Section ======= -->
-        <section id="gallery" class="gallery">
-            <div class="container">
+<section id="gallery" class="gallery">
+    <div class="container">
+        <div class="section-title">
+            <h2>Gallery</h2>
+        </div>
+    </div>
 
-                <div class="section-title">
-                    <h2>Gallery</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
-                        sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias
-                        ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+    <div class="container-fluid">
+        <div class="row g-0">
+            @foreach($galleries as $gallery)
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="{{ asset('storage/' . $gallery->photo) }}" class="gallery-lightbox">
+                            <img src="{{ asset('storage/' . $gallery->photo) }}" alt="" class="img-fluid gallery-img">
+                        </a>
+                    </div>
                 </div>
-            </div>
+            @endforeach
+        </div>
+    </div>
+</section><!-- End Gallery Section -->
 
-            <div class="container-fluid">
-                <div class="row g-0">
 
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="assets/img/gallery/gallery-1.jpg" class="galelry-lightbox">
-                                <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="assets/img/gallery/gallery-2.jpg" class="galelry-lightbox">
-                                <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="assets/img/gallery/gallery-3.jpg" class="galelry-lightbox">
-                                <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="assets/img/gallery/gallery-4.jpg" class="galelry-lightbox">
-                                <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="assets/img/gallery/gallery-5.jpg" class="galelry-lightbox">
-                                <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="assets/img/gallery/gallery-6.jpg" class="galelry-lightbox">
-                                <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="assets/img/gallery/gallery-7.jpg" class="galelry-lightbox">
-                                <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4">
-                        <div class="gallery-item">
-                            <a href="assets/img/gallery/gallery-8.jpg" class="galelry-lightbox">
-                                <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section><!-- End Gallery Section -->
 
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
@@ -1005,9 +748,15 @@
                                 <div class="error-message"></div>
                                 <div class="sent-message">Your message has been sent. Thank you!</div>
                             </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
+                            <div class="text-center"><button type="submit">Send Message</button></div><br><br><br>
                         </form>
 
+                    </div>
+
+                    <div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20411.744812676472!2d110.45317179182938!3d-6.985703856079094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708cc855dcb68f%3A0x740068fbacb464bc!2sUniversitas%20Semarang!5e0!3m2!1sid!2sid!4v1717494605492!5m2!1sid!2sid"
+                         width="100%" height="400px" style="border:0;" allowfullscreen=""
+                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
                 </div>
@@ -1025,7 +774,9 @@
                 <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Medilab</h3>
+                    @foreach ($configurations as $config )
+                        <h3>{{ $config->hospital_name }}</h3>
+                        @endforeach
                             <div>
                                 @foreach ($configurations as $configuration)
                                     <div>
@@ -1061,26 +812,6 @@
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
                         </ul>
                     </div>
-
-                    <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Services</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 footer-newsletter">
-                        <h4>Join Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                        <form action="" method="post">
-                            <input type="email" name="email"><input type="submit" value="Subscribe">
-                        </form>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -1089,8 +820,10 @@
 
             <div class="me-md-auto text-center text-md-start">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>Medilab</span></strong>. All Rights Reserved
+                    @foreach($configurations as $config)
+                    &copy; Copyright <strong><span><h3>{{ $config->hospital_name }}</h3></span></strong>. All Rights Reserved
                 </div>
+                @endforeach
                 <div class="credits">
                     <!-- All the links in the footer should remain intact. -->
                     <!-- You can delete the links only if you purchased the pro version. -->
@@ -1122,6 +855,11 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <script>
+    function showDetailImageModal(imageUrl) {
+        document.getElementById('modalImage').src = imageUrl;
+    }
+</script>
 
 </body>
 

@@ -19,7 +19,7 @@ class ConsultationController extends Controller
     {
         $patients = Patient::all();
         $doctors = Doctor::all();
-        
+
         return view('consultation.form', compact('patients', 'doctors'));
     }
 
@@ -51,4 +51,28 @@ class ConsultationController extends Controller
 
         return redirect()->route('consultation.index')->with('successMessage', 'Consultation deleted successfully');
     }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:completed,scheduled,canceled,offering,rejected',
+        ]);
+
+        $consultation = Consultation::findOrFail($id);
+        $consultation->status = $request->status;
+        $consultation->save();
+
+        return redirect()->route('consultation.index')->with('successMessage', 'Consultation status updated successfully');
+    }
+
+    public function changeStatus($id, $status)
+    {
+        $consultation = Consultation::findOrFail($id);
+        $consultation->status = $status;
+        $consultation->save();
+
+        return back()->with('success', 'Consultation status changed successfully!');
+    }
+
+
 }

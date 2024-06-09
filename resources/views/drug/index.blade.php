@@ -19,15 +19,11 @@
         <tr>
             <th width="5%">Id.</th>
             <th>Image</th>
-
             <th>Drug Name</th>
-
-
             <th>Description</th>
             <th>Brand</th>
             <th>Price</th>
             <th>Category</th>
-            <th>Price</th>
             <th width="10%">Action</th>
         </tr>
     </thead>
@@ -36,24 +32,15 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td class="align-middle text-center">
-
                     <a onclick="showDetailImageModal('{{ URL::to('storage/'. $drug->image) }}')" class="btn btn-link" data-toggle="modal" data-target="#detailImageModal">
                         <img src="{{asset('storage/' . $drug->image)}}" alt="Image" style="width: 100px; height: auto;">
                     </a>
                 </td>
                 <td>{{ $drug->drug_name }}</td>
-
-                    <!-- Button trigger modal -->
-                    <a onclick="showDetailImageModal('{{ URL::to('storage/'. $drug->image) }}')" class="btn btn-link" data-toggle="modal" data-target="#detailImageModal">
-                        <img src="{{ URL::to('storage/'. $drug->image) }}" alt="Image" style="width: 100px; height: auto;">
-                    </a>
-                </td>
-
                 <td>{{ $drug->description }}</td>
                 <td>{{ $drug->brand->brand }}</td>
                 <td>{{ $drug->price }}</td>
                 <td>{{ $drug->category->categories }}</td>
-                <td >{{ NumberFormat($drug->price) }}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">
                         <a href="{{ URL::to('drug/' .$drug->id) }}" class="btn btn-sm btn-info mr-2">Show</a>

@@ -6,7 +6,6 @@ use App\Models\Drug;
 use App\Models\Category;
 use App\Models\Brand;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class DrugController extends Controller
 {
@@ -32,19 +31,14 @@ class DrugController extends Controller
         ];
 
         $data = $request->validate([
-
             'drug_name' => 'required',
             'brand_id' => 'required',
-
-            'image' => 'required|mimes:jpg,png,jpeg,gif|max:1024',
-
             'description' => 'required',
             'category_id' => 'required',
             'price' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg,gif|max:1024',
         ], $messages);
         
-
 
         try {
 
@@ -55,16 +49,6 @@ class DrugController extends Controller
             }
 
             Drug::create($data);
-
-
-        if($request->hasFile('image')){
-            $data['image'] = $request->file('image')->store('img', 'public');
-        }else{
-            $data['image'] = null;
-        }
-
-        Drug::create($data);
-
 
             return redirect()->route('drug.index')->with("successMessage", "Tambah data sukses");
         } catch (\Throwable $th) {
@@ -93,37 +77,19 @@ class DrugController extends Controller
         ];
 
         $data = $request->validate([
-
             'drug_name' => 'required',
             'brand_id' => 'required',
-
-            'image' => 'required|mimes:jpg,png,jpeg,gif|max:1024',
-
             'description' => 'required',
             'category_id' => 'required',
             'price' => 'required',
             'image' => 'required|mimes:png,jpg,jpeg,svg|max:2048',
         ], $messages);
 
-
         try {
             if($request->hasFile('image')) {
                 $data['image'] = $request->file("image")->store('img', 'public');
             } else {
                 $data['image'] = null;
-            }
-
-
-            $drug = Drug::find($id);
-
-            if($request->hasFile('image')){
-                //use Illuminate\Support\Facades\Storage;
-                if($drug->image) {
-                    Storage::delete($drug->image);
-                }
-                $data['image'] = $request->file('image')->store('img', 'public');
-            }else{
-                $data['image'] = $drug->image;
             }
 
         $drug = Drug::findOrFail($id);

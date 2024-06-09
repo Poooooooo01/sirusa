@@ -35,6 +35,7 @@ class ConfigurationController extends Controller
             'service_text' => 'required',
             'doctor_text' => 'required',
             'about_text' => 'required',
+            'reason' => 'required',
             'about_youtube_link' => 'required',
         ], $messages);
 
@@ -71,6 +72,7 @@ class ConfigurationController extends Controller
             'service_text' => 'required',
             'doctor_text' => 'required',
             'about_text' => 'required',
+            'reason' => 'required',
             'about_youtube_link' => 'required',
         ], $messages);
 

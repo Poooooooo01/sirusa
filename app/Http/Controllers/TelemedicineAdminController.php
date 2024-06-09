@@ -74,13 +74,8 @@ class TelemedicineAdminController extends Controller
         $telemedicine = Telemedicine::with('consultation.doctor')->findOrFail($id);
         $consultations = Consultation::with('doctor')->get();
         return view('telemedicine.form', [
-
             'title' => 'Edit Obat',
             'telemedicine' => $telemedicine,
-
-            'title' => 'Edit Obat', 
-            'telemedicine' => $telemedicine, 
-
             'consultations' => $consultations
         ]);
     }

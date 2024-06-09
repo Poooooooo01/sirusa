@@ -9,10 +9,25 @@
             Consultation #{{ $consultation->id }}
         </div>
         <div class="card-body">
-            <h5 class="card-title">Patient: {{ $consultation->patient->nama }}</h5>
-            <h5 class="card-title">Doctor: {{ $consultation->doctor->name }}</h5>
-            <p class="card-text">Date: {{ $consultation->consultation_date }}</p>
-            <p class="card-text">Status: {{ ucfirst($consultation->status) }}</p>
+            <h5 class="card-title">Patient: {{ $consultation->patient->nama }}</h5><br>
+            <h5 class="card-title">Doctor: {{ $consultation->doctor->name }}</h5><br>
+            <h5 class="card-text">Date: {{ $consultation->consultation_date }}</h5>
+            <h5 class="card-text">Status: {{ ucfirst($consultation->status) }}</h5>
+            <!-- Form for Accept and Update Status -->
+            <form action="{{ route('consultation.updateStatus', $consultation->id) }}" method="post" style="display:inline-block;">
+                            @csrf
+                            @method('patch')
+                            <div class="input-group">
+                                <select name="status" class="form-select form-select-sm">
+                                    <option value="scheduled" @if($consultation->status == 'scheduled') selected @endif>Scheduled</option>
+                                    <option value="completed" @if($consultation->status == 'completed') selected @endif>Completed</option>
+                                    <option value="canceled" @if($consultation->status == 'canceled') selected @endif>Canceled</option>
+                                    <option value="rejected" @if($consultation->status == 'rejected') selected @endif>Rejected</option>
+                                </select>
+                                <button type="submit" class="btn btn-success btn-sm">Update</button>
+                            </div>
+                        </form>
+                        <br>
             <p class="card-text">Notes: {{ $consultation->notes }}</p>
             <a href="{{ route('consultation.index') }}" class="btn btn-primary">Back to list</a>
         </div>
