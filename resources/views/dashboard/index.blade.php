@@ -128,8 +128,8 @@
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
         <h1>Welcome to {{ $config->hospital_name }}</h1>
+        <h2>{{ $config->subtitle }}</h2>
         @endforeach
-        <h2>We will fight with angel of the death</h2>
             <a href="#about" class="btn-get-started scrollto">Get Started</a>
         </div>
     </section><!-- End Hero -->
@@ -768,71 +768,64 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
-
         <div class="footer-top">
             <div class="container">
-                <div class="row">
-
-                <div class="col-lg-3 col-md-6 footer-contact">
-                    @foreach ($configurations as $config )
-                        <h3>{{ $config->hospital_name }}</h3>
-                        @endforeach
-                            <div>
-                                @foreach ($configurations as $configuration)
-                                    <div>
-                                            <p><a href="">{{ $configuration->address }}</a></p>
-                                    </div>
-                                @endforeach
-                            </div><br>
-                            <strong>Phone:</strong>
-                            <div>
-                                @foreach ($configurations as $configuration)
-                                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch ">
-                                            <p><a href="">{{ $configuration->phone_number }}</a></p>
-                                    </div>
-                                @endforeach
-                            </div><br>
-                            <strong>Email:</strong> <div>
-                                @foreach ($configurations as $configuration)
-                                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch ">
-                                            <p><a href="">{{ $configuration->email }}</a></p>
-                                    </div>
-                                @endforeach
-                            </div><br>
-                        </p>
+                <div class="row justify-content-center align-items-center">
+                    <!-- Logo -->
+                    <div class="col-lg-4 text-center">
+                        <img src="images/logo.jpg" alt="Logo" style="width: 150px; height: auto;">
                     </div>
-
-                    <div class="col-lg-2 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-                        </ul>
+                    <!-- Contact Information -->
+                    <div class="col-lg-4">
+                        <div class="footer-contact">
+                            @foreach ($configurations as $config)
+                                <h3>{{ $config->hospital_name }}</h3>
+                                <p><a href="">{{ $config->address }}</a></p>
+                                <br>
+                                <strong>Phone:</strong>
+                                <p><a href="">{{ $config->phone_number }}</a></p>
+                                <br>
+                                <strong>Email:</strong>
+                                <p><a href="">{{ $config->email }}</a></p>
+                            @endforeach
+                        </div>
+                    </div>
+                    <!-- Useful Links -->
+                    <div class="col-lg-4">
+                        <div class="footer-links">
+                            <h4>Useful Links</h4>
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </footer>
 
-        <div class="container d-md-flex py-4">
 
-            <div class="me-md-auto text-center text-md-start">
-                <div class="copyright">
-                    @foreach($configurations as $config)
-                    &copy; Copyright <strong><span><h3>{{ $config->hospital_name }}</h3></span></strong>. All Rights Reserved
-                </div>
+    <div class="container d-md-flex py-4">
+        <div class="col-md-4 text-left">
+            <div class="copyright">
+                @foreach ($configurations as $config)
+                    <div class="hospital-info">
+                        <h3>{{ $config->hospital_name }}</h3>
+                        <p>&copy; {{ date('Y') }} <strong>{{ $config->hospital_name }}</strong>. All Rights
+                            Reserved. Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a></p>
+                    </div>
                 @endforeach
-                <div class="credits">
-                    <!-- All the links in the footer should remain intact. -->
-                    <!-- You can delete the links only if you purchased the pro version. -->
-                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                </div>
             </div>
-            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        </div>
+        <div class="col-md-4 text-center">
+            <!-- Add some space here -->
+        </div>
+        <div class="col-md-4 text-right">
+            <div class="social-links pt-3">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
@@ -840,6 +833,7 @@
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
         </div>
+    </div>
     </footer><!-- End Footer -->
 
     <div id="preloader"></div>

@@ -21,6 +21,7 @@ class Configuration extends Model
         'about_text',
         'reason',
         'email',
+        'subtitle',
         'about_youtube_link',
     ];
 

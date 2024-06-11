@@ -92,6 +92,16 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="subtitle">Slogan Teks</label>
+                <input type="text" id="subtitle" name="subtitle" class="form-control @error('subtitle') is-invalid @enderror"
+                    value="{{ isset($configuration) ? $configuration->subtitle : old('subtitle') }}">
+                @error('subtitle')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="about_youtube_link">Youtube</label>
                 <input type="text" id="about_youtube_link" name="about_youtube_link" class="form-control @error('about_youtube_link') is-invalid @enderror"
                     value="{{ isset($configuration) ? $configuration->about_youtube_link : old('about_youtube_link') }}">

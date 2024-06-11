@@ -24,11 +24,10 @@ class SchedulesController extends Controller
     {
         $request->validate([
             'doctor_id' => 'required|exists:doctors,id',
-            'available_date' => 'required|date_format:H:i',
+            'day' => 'required|in:Senin,Selasa,Rabu,Kamis,Jumat',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i',
         ]);
-
-        // Tambahkan tanggal default jika hanya jam yang diinput
-        $request->merge(['available_date' => now()->format('Y-m-d') . ' ' . $request->available_date]);
 
         Schedules::create($request->all());
 
@@ -45,11 +44,10 @@ class SchedulesController extends Controller
     {
         $request->validate([
             'doctor_id' => 'required|exists:doctors,id',
-            'available_date' => 'required|date_format:H:i',
+            'day' => 'required|in:Senin,Selasa,Rabu,Kamis,Jumat',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i',
         ]);
-
-        // Tambahkan tanggal default jika hanya jam yang diinput
-        $request->merge(['available_date' => now()->format('Y-m-d') . ' ' . $request->available_date]);
 
         $schedule->update($request->all());
 
@@ -63,4 +61,5 @@ class SchedulesController extends Controller
         return redirect()->route('schedules.index')->with('successMessage', 'Schedule deleted successfully.');
     }
 }
+
 

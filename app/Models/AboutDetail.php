@@ -14,7 +14,7 @@ class AboutDetail extends Model
 
     protected $fillable = [
         'title',
-        'description'
+        'description',
     ];
 
     const CREATED_AT = 'created_at';
