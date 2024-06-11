@@ -50,6 +50,12 @@ Route::get('register', [RegisterPatientController::class, 'showRegistrationForm'
 Route::post('register', [RegisterPatientController::class, 'register'])->name('register.patient');
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('forgetpassword', [LoginPatientController::class, 'showForgetPasswordForm'])->name('forgetpassword');
+Route::post('forgetpassword', [LoginPatientController::class, 'submitForgetPasswordForm']);
+Route::get('resetpassword/{token}', [LoginPatientController::class, 'showResetPasswordForm'])->name('resetpassword');
+Route::post('resetpassword', [LoginPatientController::class, 'submitResetPasswordForm'])->name('resetpassword');
+
+
 
 // Route yang memerlukan login
 Route::middleware('auth')->group(function () {
