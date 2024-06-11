@@ -12,8 +12,6 @@
         {{ session("errorMessage") }}
     </div>
 @endif
-
-<a href="{{ route('brand.create') }}" class="btn btn-success mb-3">Add</a>
 <table id="datatable1" class="table table-bordered table-striped">
     <thead>
         <tr>

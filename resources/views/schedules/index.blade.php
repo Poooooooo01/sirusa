@@ -17,18 +17,22 @@
 <table id="datatable1" class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th width="5%">Id.</th>
+            <th width="5%">Id</th>
             <th>Doctor Name</th>
-            <th>Available Date</th>
+            <th>Day</th>
+            <th>Start Time</th>
+            <th>End Time</th>
             <th width="10%">Action</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($schedules as $schedule)
+        @foreach ($schedules as $index => $schedule)
             <tr>
-                <td>{{ $schedule->id }}</td>
+                <td>{{ $index + 1 }}</td>
                 <td>{{ $schedule->doctor->name }}</td>
-                <td>{{ date('Y-m-d H:i', strtotime($schedule->available_date)) }}</td>
+                <td>{{ $schedule->day }}</td>
+                <td>{{ $schedule->start_time }}</td>
+                <td>{{ $schedule->end_time }}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">
                         <a href="{{ route('schedules.edit', $schedule->id) }}" class="btn btn-sm btn-warning mr-2">Edit</a>

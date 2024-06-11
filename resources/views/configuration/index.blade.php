@@ -27,6 +27,7 @@
             <th>Doktor Teks</th>
             <th>About Teks</th>
             <th>Reason Teks</th>
+            <th>Slogan</th>
             <th>About Youtube Link</th>
             <th width="100px">Action</th>
         </tr>
@@ -43,6 +44,7 @@
             <td>{{ $configuration->doctor_text }}</td>
             <td>{{ $configuration->about_text }}</td>
             <td>{{ $configuration->reason }}</td>
+            <td>{{ $configuration->subtitle }}</td>
             <td>{{ $configuration->about_youtube_link}}</td>
             <td>
                 <div class="d-flex">

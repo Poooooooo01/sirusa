@@ -50,6 +50,11 @@
             <a href="{{ URL::to('doctor') }}" class="nav-link {{ Request::is('doctor') ? ' active' : '' }}">
               <i class="fas fa-home"></i> Home
             </a>
+            <li>
+              <a href="{{ URL::to('biodatadoctor') }}" class="nav-link">
+                <i class="far fa-address-card"></i> Biodata
+              </a>
+            </li>
           <li>
           <a href="{{ URL::to('appointmentdoctor') }}" class="nav-link">
               <i class="fas fa-calendar-check"></i> Appointment

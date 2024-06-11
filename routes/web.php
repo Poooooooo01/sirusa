@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AppointmentDoctorController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BiodataDoctorController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\CategoryController;
@@ -31,6 +32,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\RegisterPatientController;
 use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk landing page yang tidak memerlukan login
@@ -71,6 +73,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('faq', FaqController::class);
         Route::resource('gallery', GalleriesController::class);
         Route::resource('testimon', TestimonialsController::class);
+        Route::resource('report', ReportController::class);
         Route::get('telemedicine/create/{consultation}', [TelemedicineAdminController::class, 'createFromConsultation'])->name('telemedicine.createFromConsultation');
         Route::post('telemedicine/storeFromConsultation', [TelemedicineAdminController::class, 'storeFromConsultation'])->name('telemedicine.storeFromConsultation');
         Route::get('telemedicine/{telemedicine}/details/create', [TelemedicineDetailController::class, 'create'])->name('telemedicine.details.create');
@@ -95,6 +98,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('doctor', DoctorController::class);
         Route::resource('appointmentdoctor', AppointmentDoctorController::class);
         Route::resource('conversationdoctor', ConversationDoctorController::class);
+        Route::resource('biodatadoctor', BiodataDoctorController::class);
         Route::get('/consultation/{id}/status/{status}', [ConsultationController::class, 'changeStatus'])->name('consultation.status');
 
     });

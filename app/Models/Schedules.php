@@ -14,7 +14,9 @@ class Schedules extends Model
 
     protected $fillable = [
         'doctor_id',
-        'available_date',
+        'day',
+        'start_time',
+        'end_time',
     ];
 
     protected $dates = ['deleted_at'];
@@ -24,3 +26,4 @@ class Schedules extends Model
         return $this->belongsTo(Doctor::class, 'doctor_id');
     }
 }
+

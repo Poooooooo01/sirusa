@@ -1,12 +1,13 @@
 <?php
 // Konfigurasi database
-$db_host = 'localhost'; // Ganti dengan host database Anda
-$db_username = 'root'; // Ganti dengan username database Anda
-$db_password = ''; // Ganti dengan password database Anda
-$db_name = 'rusa'; // Ganti dengan nama database Anda
+$db_host = 'educalab.id';
+$db_username = 'B3Al0QNDHV7z4Jm0';
+$db_password = 'VK8OluX8s9jqnW5n';
+$db_name = 'T696QQvt3vaK1cc6';
+$db_port = 3307;
 
 // Koneksi ke database
-$conn = new mysqli($db_host, $db_username, $db_password, $db_name);
+$conn = new mysqli($db_host, $db_username, $db_password, $db_name, $db_port);
 
 // Cek koneksi
 if ($conn->connect_error) {
@@ -20,13 +21,17 @@ $subject = $_POST['subject'];
 $message = $_POST['message'];
 
 // Simpan data ke database
-$sql = "INSERT INTO reports (nama, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')";
-if ($conn->query($sql) === TRUE) {
+$sql = "INSERT INTO reports (nama, email, subject, message) VALUES (?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ssss", $name, $email, $subject, $message);
+
+if ($stmt->execute()) {
     echo "OK"; // Jika berhasil disimpan, kirimkan respon 'OK'
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $stmt->error;
 }
 
 // Tutup koneksi database
+$stmt->close();
 $conn->close();
 ?>

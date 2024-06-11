@@ -88,24 +88,24 @@
                         </a>
                     </li>
                     <li>
-
-                    </li>
-                    <li>
-
-                    </li>
-                    <li>
                         <a href="#peopleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <i class="fas fa-users"></i> People
                         </a>
                         <ul class="collapse list-unstyled" id="peopleSubmenu">
                             <li>
-                                <a href="{{ URL::to('useradmin') }}"><i class="fas fa-user"></i> User</a>
+                                <a href="{{ URL::to('useradmin') }}"
+                                    class="nav-link {{ Request::is('useradmin') ? ' active' : '' }}"><i
+                                        class="fas fa-user"></i> User</a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('doctoradmin') }}"><i class="fas fa-user-md"></i> Doctor</a>
+                                <a href="{{ URL::to('doctoradmin') }}"
+                                    class="nav-link {{ Request::is('doctoradmin') ? ' active' : '' }}"><i
+                                        class="fas fa-user-md"></i> Doctor</a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('patientadmin') }}"><i class="fas fa-procedures"></i> Patient</a>
+                                <a href="{{ URL::to('patientadmin') }}"
+                                    class="nav-link {{ Request::is('patientadmin') ? ' active' : '' }}"><i
+                                        class="fas fa-procedures"></i> Patient</a>
                             </li>
                         </ul>
                     </li>
@@ -116,8 +116,9 @@
                         </a>
                         <ul class="collapse list-unstyled" id="appointmentSubmenu">
                             <li>
-                                <a href="{{ URL::to('consultation') }}"><i class="fas fa-comments"></i>
-                                    Consultations</a>
+                                <a href="{{ URL::to('consultation') }}"
+                                    class="nav-link {{ Request::is('consultation') ? ' active' : '' }}"><i
+                                        class="fas fa-comments"></i> Consultations</a>
                             </li>
                         </ul>
                     </li>
@@ -128,17 +129,23 @@
                         </a>
                         <ul class="collapse list-unstyled" id="telemedicineSubmenu">
                             <li>
-                                <a href="{{ URL::to('telemedicine') }}"><i class="fas fa-laptop-medical"></i>
-                                    Telemedicine</a>
+                                <a href="{{ URL::to('telemedicine') }}"
+                                    class="nav-link {{ Request::is('telemedicine') ? ' active' : '' }}"><i
+                                        class="fas fa-laptop-medical"></i> Telemedicine</a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('drug') }}"><i class="fas fa-pills"></i> Drug</a>
+                                <a href="{{ URL::to('drug') }}"
+                                    class="nav-link {{ Request::is('drug') ? ' active' : '' }}"><i
+                                        class="fas fa-pills"></i> Drug</a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('category') }}"><i class="fas fa-list"></i> Category</a>
+                                <a href="{{ URL::to('category') }}"
+                                    class="nav-link {{ Request::is('category') ? ' active' : '' }}"><i
+                                        class="fas fa-list"></i> Category</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fas fa-credit-card"></i> Payment</a>
+                                <a href="#" class="nav-link {{ Request::is('payment') ? ' active' : '' }}"><i
+                                        class="fas fa-credit-card"></i> Payment</a>
                             </li>
                         </ul>
                     </li>
@@ -148,12 +155,15 @@
                         </a>
                         <ul class="collapse list-unstyled" id="doctorSubmenu">
                             <li>
-                                <a href="{{ URL::to('schedules') }}"><i class="fas fa-calendar-alt"></i> Schedules</a>
+                                <a href="{{ URL::to('schedules') }}"
+                                    class="nav-link {{ Request::is('schedules') ? ' active' : '' }}"><i
+                                        class="fas fa-calendar-alt"></i> Schedules</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ URL::to('testimon') }}" class="nav-link">
+                        <a href="{{ URL::to('testimon') }}"
+                            class="nav-link {{ Request::is('testimon') ? ' active' : '' }}">
                             <i class="fas fa-comment"></i> Testimoni
                         </a>
                     </li>
@@ -170,39 +180,56 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('configuration') }}"><i class="fas fa-cogs"></i> Configuration</a>
+                                <a href="{{ URL::to('configuration') }}"
+                                    class="nav-link {{ Request::is('configuration') ? ' active' : '' }}"><i
+                                        class="fas fa-cogs"></i> Configuration</a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('faq') }}"><i class="fas fa-cogs"></i>Faq</a>
+                                <a href="{{ URL::to('faq') }}"
+                                    class="nav-link {{ Request::is('faq') ? ' active' : '' }}"><i
+                                        class="fas fa-question"></i> FAQ</a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('aboutDetail') }}"><i class="fas fa-cogs"></i>About</a>
+                                <a href="{{ URL::to('aboutDetail') }}"
+                                    class="nav-link {{ Request::is('aboutDetail') ? ' active' : '' }}"><i
+                                        class="fas fa-info-circle"></i> About</a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('homeDetail') }}"><i class="fas fa-cogs"></i>Home Detail</a>
+                                <a href="{{ URL::to('homeDetail') }}"
+                                    class="nav-link {{ Request::is('homeDetail') ? ' active' : '' }}"><i
+                                        class="fas fa-home"></i> Home Detail</a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('gallery') }}"><i class="fas fa-cogs"></i>Gallery</a>
+                                <a href="{{ URL::to('gallery') }}"
+                                    class="nav-link {{ Request::is('gallery') ? ' active' : '' }}"><i
+                                        class="fas fa-image"></i> Gallery</a>
                             </li>
-                            <a href="{{ URL::to('facilitie') }}"
-                                class="nav-link {{ Request::is('facilitie') ? ' active' : '' }}">
-                                <i class="fas fa-hospital"></i> Facilities
-                            </a>
-                            <a href="{{ URL::to('brand') }}"
-                                class="nav-link {{ Request::is('brand') ? ' active' : '' }}">
-                                <i class="fas fa-eye"></i> Brand
-                            </a>
+                            <li>
+                                <a href="{{ URL::to('facilitie') }}"
+                                    class="nav-link {{ Request::is('facilitie') ? ' active' : '' }}"><i
+                                        class="fas fa-hospital"></i> Facilities</a>
+                            </li>
+                            <li>
+                                <a href="{{ URL::to('brand') }}"
+                                    class="nav-link {{ Request::is('brand') ? ' active' : '' }}"><i
+                                        class="fas fa-eye"></i> Brand</a>
+                            </li>
+                        </ul>
                     </li>
-                </ul>
-                </li>
-                <li>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fas fa-sign-out-alt"></i> Log-Out
-                    </a>
-                </li>
+                    <li>
+                        <a href="{{ URL::to('report') }}"
+                            class="nav-link {{ Request::is('report') ? ' active' : '' }}">
+                            <i class="fas fa-file"></i> Report
+                        </a>
+                    </li>
+                    <li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt"></i> Log-Out
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

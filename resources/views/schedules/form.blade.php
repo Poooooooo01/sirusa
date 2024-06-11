@@ -20,9 +20,28 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="available_date">Available Date</label>
-                <input type="time" id="available_date" name="available_date" class="form-control @error('available_date') is-invalid @enderror" value="{{ isset($schedule) ? date('Y-m-d\TH:i', strtotime($schedule->available_date)) : old('available_date') }}">
-                @error('available_date')
+                <label for="day">Day</label>
+                <select class="form-control" name="day" id="day">
+                    <option value="Senin" {{ isset($schedule) && $schedule->day === 'Senin' ? 'selected' : '' }}>Senin</option>
+                    <option value="Selasa" {{ isset($schedule) && $schedule->day === 'Selasa' ? 'selected' : '' }}>Selasa</option>
+                    <option value="Rabu" {{ isset($schedule) && $schedule->day === 'Rabu' ? 'selected' : '' }}>Rabu</option>
+                    <option value="Kamis" {{ isset($schedule) && $schedule->day === 'Kamis' ? 'selected' : '' }}>Kamis</option>
+                    <option value="Jumat" {{ isset($schedule) && $schedule->day === 'Jumat' ? 'selected' : '' }}>Jumat</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="start_time">Start Time</label>
+                <input type="time" id="start_time" name="start_time" class="form-control @error('start_time') is-invalid @enderror" value="{{ isset($schedule) ? $schedule->start_time : old('start_time') }}">
+                @error('start_time')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="end_time">End Time</label>
+                <input type="time" id="end_time" name="end_time" class="form-control @error('end_time') is-invalid @enderror" value="{{ isset($schedule) ? $schedule->end_time : old('end_time') }}">
+                @error('end_time')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
