@@ -144,7 +144,7 @@
             <button class="btn mt-3" type="submit">Login</button>
         </form>
         <div class="text-center fs-6">
-            <a href="#">Forget password?</a> |
+            <a href="{{ route('forgetpassword') }}">Forget password?</a> |
             <a href={{ route('register.patient') }}>Register?</a>
         </div>
     </div>
