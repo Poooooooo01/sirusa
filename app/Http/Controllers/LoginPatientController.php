@@ -91,13 +91,12 @@ class LoginPatientController extends Controller
     {
         $request->validate([
             'token' => 'required',
-            'email' => 'required|email',
             'password' => 'required|confirmed'
         ]);
 
         $passwordReset = \DB::table('password_resets')
-                            ->where('token', $request->token)
-                            ->first();
+            ->where('token', $request->token)
+            ->first();
 
         if (!$passwordReset) {
             return back()->with('error', 'Invalid token');
@@ -114,6 +113,7 @@ class LoginPatientController extends Controller
 
         \DB::table('password_resets')->where('email', $user->email)->delete();
 
-        return redirect()->route('login')->with('success', 'Password has been reset');
+        return redirect()->route('login')->with('nganu', 'Password has been reset');
     }
+
 }
