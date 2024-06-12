@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container mt-5">
         @if (session('successMessage'))
             <div class="alert alert-success">
                 {{ session('successMessage') }}
+            </div>
+        @endif
+        @if(session()->has("errorMessage"))
+            <div class="alert alert-danger">
+                {{ session("errorMessage") }}
+            </div>
+        @endif
+        @if(session()->has("error"))
+            <div class="alert alert-danger">
+                {{ session("error") }}
             </div>
         @endif
         <h2 class="text-center mb-4">Login Sebagai</h2>
@@ -49,4 +61,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

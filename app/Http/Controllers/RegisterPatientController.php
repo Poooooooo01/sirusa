@@ -7,6 +7,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
+use Illuminate\Support\Str;
+
 
 class RegisterPatientController extends Controller
 {
@@ -24,12 +28,12 @@ class RegisterPatientController extends Controller
             'gender.required' => 'Pilih jenis kelamin.',
             'address.required' => 'Isi alamat dengan benar.',
             'emergency_contact.required' => 'Isi kontak darurat dengan benar.',
-            'nama.required' => 'Harap isi nama dengan benar.', // Tambahkan pesan validasi untuk nama
+            'nama.required' => 'Harap isi nama dengan benar.',
         ];
 
         $data = $request->validate([
             'nik' => 'required|unique:patients',
-            'nama' => 'required|string|max:255', // Tambahkan validasi untuk nama
+            'nama' => 'required|string|max:255',
             'date_of_birth' => 'required',
             'gender' => 'required',
             'address' => 'required',
@@ -37,8 +41,9 @@ class RegisterPatientController extends Controller
             'email' => 'required|email|unique:users',
             'username' => 'required|alpha_num|unique:users',
             'password' => 'required|min:3',
-            'role' => 'required',            
+            'role' => 'required',
         ], $messages);
+
         try {
             DB::beginTransaction();
 
@@ -46,24 +51,46 @@ class RegisterPatientController extends Controller
                 'email' => $data['email'],
                 'username' => $data['username'],
                 'password' => Hash::make($data["password"]),
-                'role' => $data['role'], 
+                'role' => $data['role'],
             ]);
-    
+
             Patient::create([
                 'id' => $user->id,
-                'nik' =>  $data['nik'],
+                'nik' => $data['nik'],
                 'nama' => $data['nama'],
                 'date_of_birth' => $data['date_of_birth'],
                 'gender' => $data['gender'],
                 'address' => $data['address'],
-                'emergency_contact' => $data['emergency_contact'],       
+                'emergency_contact' => $data['emergency_contact'],
             ]);
 
+            // Buat token verifikasi
+            $token = Str::random(64);
+
+            // Simpan token ke database
+            DB::table('email_verifications')->insert([
+                'user_id' => $user->id,
+                'token' => $token,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            // Kirim Email Verifikasi
+            $emailData = [
+                'email' => $data['email'],
+                'subject' => 'Email Verification',
+                'view' => 'emails.verify',
+                'token' => $token,
+            ];
+
+            Mail::to($data['email'])->send(new SendEmail($emailData));
+
             DB::commit();
-            return redirect()->route('login')->with("successMessage", "Selamat Proses Register Anda Sukses");    
+            return redirect()->route('login')->with("successMessage", "Selamat Proses Register Anda Sukses. Silakan cek email untuk verifikasi.");
         } catch (\Throwable $th) {
-            DB::rollback();            
-            return redirect()->route('patient.index')->with("errorMessage", $th->getMessage());
-        } 
+            DB::rollback();
+            return redirect()->route('login')->with("errorMessage", $th->getMessage());
+        }
     }
 }
+

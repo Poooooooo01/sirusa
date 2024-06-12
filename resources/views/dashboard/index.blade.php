@@ -27,6 +27,7 @@
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/lightbox/css/lightbox.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -658,7 +659,7 @@
             @foreach($galleries as $gallery)
                 <div class="col-lg-3 col-md-4">
                     <div class="gallery-item">
-                        <a href="{{ asset('storage/' . $gallery->photo) }}" class="gallery-lightbox">
+                        <a href="{{ asset('storage/' . $gallery->photo) }}" data-lightbox="gallery" data-title="Your Image Title">
                             <img src="{{ asset('storage/' . $gallery->photo) }}" alt="" class="img-fluid gallery-img">
                         </a>
                     </div>
@@ -667,6 +668,7 @@
         </div>
     </div>
 </section><!-- End Gallery Section -->
+
 
 
 
@@ -846,6 +848,7 @@
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="{{ asset('assets/lightbox/js/lightbox-plus-jquery.js') }}"></script>
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>

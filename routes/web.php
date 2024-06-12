@@ -33,6 +33,7 @@ use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\RegisterPatientController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\EmailVerificationController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk landing page yang tidak memerlukan login
@@ -54,6 +55,7 @@ Route::get('forgetpassword', [LoginPatientController::class, 'showForgetPassword
 Route::post('forgetpassword', [LoginPatientController::class, 'submitForgetPasswordForm']);
 Route::get('resetpassword/{token}', [LoginPatientController::class, 'showResetPasswordForm'])->name('resetpassword');
 Route::post('resetpassword', [LoginPatientController::class, 'submitResetPasswordForm'])->name('resetpassword');
+Route::get('/verify-email/{token}', [EmailVerificationController::class, 'verify'])->name('verify.email');
 
 
 
@@ -92,7 +94,7 @@ Route::middleware('auth')->group(function () {
     });
 
     // Route untuk pasien
-    Route::middleware('role:pasien')->group(function () {
+    Route::middleware(['auth', 'role:pasien', 'verified', 'ensure.email.verified'])->group(function () {
         Route::resource('patient', PatientController::class);
         Route::resource('biodata', BiodataController::class);
         Route::resource('appointment', AppointmentController::class);
