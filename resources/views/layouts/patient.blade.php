@@ -42,41 +42,49 @@
 <body>
 
   <div class="wrapper d-flex align-items-stretch">
-    <nav id="sidebar">
-      <div class="p-4 pt-5">
+    <!-- Sidebar -->
+<nav id="sidebar">
+    <div class="p-4 pt-5">
         <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
         <ul class="list-unstyled components mb-5">
-        <li>
-            <a href="#">
-              <i class="fas fa-home"></i> Home
-            </a>
-          </li>
-          <li>
-            <a href="{{ URL::to('biodata') }}" class="nav-link">
-              <i class="far fa-address-card"></i> Biodata
-            </a>
-          </li>
-          <li>
-            <a href="{{ URL::to('appointment') }}" class="nav-link">
-              <i class="fas fa-calendar-check"></i> Appointment
-            </a>
-          </li>
-          <li>
-            <a href="{{ route('testimonial.create') }}" class="nav-link">
-              <i class="fas fa-comment"></i> Testimoni
-            </a>
-          </li>
-          <li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
-            </form>
-            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              <i class="fas fa-sign-out-alt"></i> Log-Out
-            </a>
-          </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            <li>
+                <a href="{{ URL::to('biodata') }}" class="nav-link">
+                    <i class="far fa-address-card"></i> Biodata
+                </a>
+            </li>
+            <li>
+                <a href="{{ URL::to('appointment') }}" class="nav-link">
+                    <i class="fas fa-calendar-check"></i> Appointment
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('testimonial.create') }}" class="nav-link">
+                    <i class="fas fa-comment"></i> Testimoni
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('chat') }}" id="btn-chat">
+                    <i class="fas fa-comment"></i> Chat
+                </a>
+            </li>
+            <li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> Log-Out
+                </a>
+            </li>
         </ul>
-      </div>
-    </nav>
+    </div>
+</nav>
+<!-- End Sidebar -->
+
 
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5">

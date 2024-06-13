@@ -88,6 +88,11 @@
             box-shadow: 3px 3px 3px #b1b1b1,
                 -3px -3px 3px #fff;
             letter-spacing: 1.3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .wrapper .btn:hover {
@@ -104,17 +109,31 @@
             color: #039BE5;
         }
 
+        .btn:active {
+            cursor: pointer;
+            background-color: #0275d8;
+            color: #fff;
+        }
+
+        .btn-google {
+            background-color: #DB4437;
+        }
+
+        .btn-google:hover {
+            background-color: #c1351b;
+        }
+
+        .btn-google img {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+        }
+
         @media(max-width: 380px) {
             .wrapper {
                 margin: 30px 20px;
                 padding: 40px 15px 15px 15px;
             }
-        }
-
-        .btn:active {
-            cursor: pointer;
-            background-color: #0275d8;
-            color: #fff;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -146,6 +165,7 @@
         <div class="text-center fs-6">
             <a href="{{ route('forgetpassword') }}">Forget password?</a> |
             <a href={{ route('register.patient') }}>Register?</a>
+            <a href="{{ route('redirect') }}" class="btn btn-google"> <img src="https://i.pinimg.com/474x/9d/de/9d/9dde9d190e2a1988856651d7dc93d8e3.jpg" alt="Google Logo"></a>
         </div>
     </div>
 </body>

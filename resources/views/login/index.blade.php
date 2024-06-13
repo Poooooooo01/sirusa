@@ -30,6 +30,11 @@
                 {{ session("nganu") }}
             </div>
         @endif
+        @if(session()->has("pesaneror"))
+            <div class="alert alert-success">
+                {{ session("pesaneror") }}
+            </div>
+        @endif
         <h2 class="text-center mb-4">Login Sebagai</h2>
         <div class="row justify-content-center">
             <div class="col-md-4 mb-3">

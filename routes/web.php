@@ -34,6 +34,8 @@ use App\Http\Controllers\RegisterPatientController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\EmailVerificationController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk landing page yang tidak memerlukan login
@@ -56,6 +58,25 @@ Route::post('forgetpassword', [LoginPatientController::class, 'submitForgetPassw
 Route::get('resetpassword/{token}', [LoginPatientController::class, 'showResetPasswordForm'])->name('resetpassword');
 Route::post('resetpassword', [LoginPatientController::class, 'submitResetPasswordForm'])->name('resetpassword');
 Route::get('/verify-email/{token}', [EmailVerificationController::class, 'verify'])->name('verify.email');
+Route::get('/chat', [ChatController::class, 'showChatForm'])->name('chat');
+Route::post('/chat', [ChatController::class, 'handleChat']);
+
+// Untuk redirect ke Google
+Route::get('login/google/redirect', [SocialiteController::class, 'redirect'])
+    ->middleware(['web', 'guest'])
+    ->name('redirect');
+
+Route::get('login/google/callback', [SocialiteController::class, 'callback'])
+    ->middleware(['web', 'guest'])
+    ->name('callback');
+
+
+
+// Untuk logout
+Route::post('logout', [SocialiteController::class, 'logout'])
+    ->middleware(['auth'])
+    ->name('logout');
+
 
 
 
