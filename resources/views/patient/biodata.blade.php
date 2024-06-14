@@ -11,8 +11,8 @@
                         Biodata {{ $patient->nama }}
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">NIK: {{ $patient->nik }}</h5>
-                        <h5 class="card-title">Nama: {{ $patient->nama }}</h5>
+                        <p class="card-title">NIK: {{ $patient->nik }}</p><br>
+                        <p class="card-title">Nama: {{ $patient->nama }}</p>
                         <p class="card-text">Tanggal Lahir: {{ $patient->date_of_birth }}</p>
                         <p class="card-text">Gender: {{ $patient->gender }}</p>
                         <p class="card-text">Address: {{ $patient->address }}</p>
