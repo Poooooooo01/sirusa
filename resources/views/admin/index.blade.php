@@ -40,6 +40,8 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="icon" href="{{ URL::to('assets/img/icon.jpg') }}">
+
 
   <!-- =======================================================
   * Template Name: Medilab
