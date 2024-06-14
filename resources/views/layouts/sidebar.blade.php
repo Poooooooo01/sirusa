@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="{{  asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{  asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{  asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <link rel="icon" href="{{ URL::to('assets/img/icon.jpg') }}">
+
     <style>
         #sidebar {
             background: rgba(255, 255, 255, 0.5);
