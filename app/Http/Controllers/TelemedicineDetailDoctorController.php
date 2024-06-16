@@ -8,18 +8,18 @@ use App\Models\TelemedicineDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TelemedicineDetailController extends Controller
+class TelemedicineDetailDoctorController extends Controller
 {
     public function index(Telemedicine $telemedicine)
     {
         $details = $telemedicine->details; // Eloquent relationship
-        return view('telemedicinedetail.index', ['details' => $details, 'telemedicine' => $telemedicine]);
+        return view('doctor.telemedicinedetail.index', ['details' => $details, 'telemedicine' => $telemedicine]);
     }
 
     public function create(Telemedicine $telemedicine)
     {
         $drugs = Drug::all();
-        return view('telemedicinedetail.form', compact('telemedicine', 'drugs'));
+        return view('doctor.telemedicinedetail.form', compact('telemedicine', 'drugs'));
     }
 
     public function store(Telemedicine $telemedicine, Request $request)
@@ -41,7 +41,7 @@ class TelemedicineDetailController extends Controller
             'total' => $total,
         ]);
 
-        return redirect()->route('telemedicine.details', $telemedicine->id)
+        return redirect()->route('telemedicinedoctor.details', $telemedicine->id)
                          ->with('successMessage', 'Telemedicine detail added successfully.');
     }
 
@@ -50,7 +50,7 @@ class TelemedicineDetailController extends Controller
         $detail = TelemedicineDetail::find($id);
         if ($detail) {
             $detail->delete();
-            return redirect()->route('telemedicine.details', $detail->telemedicine_id)
+            return redirect()->route('telemedicinedoctor.details', $detail->telemedicine_id)
                              ->with('successMessage', 'Detail deleted successfully.');
         } else {
             return redirect()->back()->with('errorMessage', 'Detail not found.');

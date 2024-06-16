@@ -1,4 +1,4 @@
-@extends('layouts.sidebar')
+@extends('layouts.doctor')
 @section('container')
 
 @if (session()->has("successMessage"))
@@ -15,7 +15,7 @@
 
 <h2>Details for {{ $telemedicine->service_name }}</h2>
 
-<a href="{{ route('telemedicine.details.create', $telemedicine->id) }}" class="btn btn-info btn-sm mr-1">Add Detail</a>
+<a href="{{ route('telemedicinedoctor.details.create', $telemedicine->id) }}" class="btn btn-info btn-sm mr-1">Add Detail</a>
 
 <table id="datatable1" class="table table-bordered table-striped">
     <thead>
@@ -40,7 +40,7 @@
                 <td>{{ $detail->drug->price }}</td>
                 <td>{{ $detail->total }}</td> <!-- Calculate total -->
                 <td>
-                    <form action="{{ route('telemedicinedetails.destroy', $detail->id) }}" method="post" class="d-inline">
+                    <form action="{{ route('telemedicinedoctordetails.destroy', $detail->id) }}" method="post" class="d-inline">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin mau menghapus data ini {{ $detail->name }} ?')">Delete</button>

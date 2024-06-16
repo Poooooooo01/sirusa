@@ -1,4 +1,4 @@
-@extends('layouts.sidebar')
+@extends('layouts.doctor')
 @section('container')
 
 @if (session()->has("successMessage"))
@@ -13,7 +13,7 @@
     </div>
 @endif
 
-<a href="{{ route('drug.create') }}" class="btn btn-success mb-3">Add</a>
+<a href="{{ route('drugdoctor.create') }}" class="btn btn-success mb-3">Add</a>
 <table id="datatable1" class="table table-bordered table-striped">
     <thead>
         <tr>

@@ -36,6 +36,11 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\TelemedicineController;
+use App\Http\Controllers\TelemedicineDetailDoctorController;
+use App\Http\Controllers\DrugDoctorController;
+use App\Http\Controllers\TelemedicinePatientController;
+use App\Http\Controllers\TelemedicineDetailPatientController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk landing page yang tidak memerlukan login
@@ -69,16 +74,6 @@ Route::get('login/google/redirect', [SocialiteController::class, 'redirect'])
 Route::get('login/google/callback', [SocialiteController::class, 'callback'])
     ->middleware(['web', 'guest'])
     ->name('callback');
-
-
-
-// Untuk logout
-Route::post('logout', [SocialiteController::class, 'logout'])
-    ->middleware(['auth'])
-    ->name('logout');
-
-
-
 
 // Route yang memerlukan login
 Route::middleware('auth')->group(function () {
@@ -121,6 +116,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('appointment', AppointmentController::class);
         Route::resource('testimonial', TestimonialsController::class);
         Route::resource('conversations', ConversationController::class);
+        Route::get('schedulespatient', [SchedulesController::class, 'patient']);
+        Route::get('/telemedicinepatient/consultation/{consultationId}', [TelemedicinePatientController::class, 'indexByConsultation'])->name('telemedicine.indexByConsulPatient');
+        Route::get('telemedicinepatient/{telemedicine}/details', [TelemedicineDetailPatientController::class, 'index'])->name('telemedicinepatient.details');
     });
 
     Route::middleware('role:dokter')->group(function () {
@@ -128,8 +126,18 @@ Route::middleware('auth')->group(function () {
         Route::resource('appointmentdoctor', AppointmentDoctorController::class);
         Route::resource('conversationdoctor', ConversationDoctorController::class);
         Route::resource('biodatadoctor', BiodataDoctorController::class);
+        Route::resource('drugdoctor', DrugDoctorController::class);
         Route::get('/consultation/{id}/status/{status}', [ConsultationController::class, 'changeStatus'])->name('consultation.status');
-
+        Route::get('/telemedicinedoctor/consultation/{consultationId}', [TelemedicineController::class, 'indexByConsultation'])->name('telemedicine.indexByConsul');
+        Route::get('/telemedicinedoctor/createdoctor/{consultationId}', [TelemedicineController::class, 'create'])->name('telemedicine.create');
+        Route::post('/telemedicinedoctor/store', [TelemedicineController::class, 'store'])->name('telemedicine.store');
+        Route::get('/telemedicinedoctor/{telemedicine}/edit', [TelemedicineController::class, 'edit'])->name('telemedicine.edit');
+        Route::put('/telemedicinedoctor/{telemedicine}', [TelemedicineController::class, 'update'])->name('telemedicine.update');
+        Route::delete('/telemedicinedoctor/{telemedicine}', [TelemedicineController::class, 'destroy'])->name('telemedicine.destroy');
+        Route::get('telemedicinedoctor/{telemedicine}/details/create', [TelemedicineDetailDoctorController::class, 'create'])->name('telemedicinedoctor.details.create');
+        Route::post('telemedicinedoctor/{telemedicine}/details', [TelemedicineDetailDoctorController::class, 'store'])->name('telemedicinedoctor.details.store');
+        Route::get('telemedicinedoctor/{telemedicine}/details', [TelemedicineDetailDoctorController::class, 'index'])->name('telemedicinedoctor.details');
+        Route::delete('telemedicinedoctordetails/{id}', [TelemedicineDetailDoctorController::class, 'destroy'])->name('telemedicinedoctordetails.destroy');
     });
 });
 

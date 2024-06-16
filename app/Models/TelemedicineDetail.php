@@ -17,6 +17,7 @@ class TelemedicineDetail extends Model
         'detail_description',
         'amount',
         'drug_id',
+        'total',
     ];
 
     const CREATED_AT = 'created_at';

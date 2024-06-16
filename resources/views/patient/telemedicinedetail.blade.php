@@ -1,4 +1,4 @@
-@extends('layouts.sidebar')
+@extends('layouts.patient')
 @section('container')
 
 @if (session()->has("successMessage"))
@@ -15,8 +15,6 @@
 
 <h2>Details for {{ $telemedicine->service_name }}</h2>
 
-<a href="{{ route('telemedicine.details.create', $telemedicine->id) }}" class="btn btn-info btn-sm mr-1">Add Detail</a>
-
 <table id="datatable1" class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -25,9 +23,8 @@
             <th>Amount</th>
             <th>Drug</th>
             <th>Price</th>
+            <th>Image</th>
             <th>Total</th>
-            <th>Action</th>
-            <!-- Add more columns as needed -->
         </tr>
     </thead>
     <tbody>
@@ -38,7 +35,12 @@
                 <td>{{ $detail->amount }}</td>
                 <td>{{ $detail->drug->drug_name }}</td>
                 <td>{{ $detail->drug->price }}</td>
-                <td>{{ $detail->total }}</td> <!-- Calculate total -->
+                <td class="align-middle text-center">
+                    <a onclick="showDetailImageModal('{{ URL::to('storage/'. $detail->drug->image) }}')" class="btn btn-link" data-toggle="modal" data-target="#detailImageModal">
+                        <img src="{{asset('storage/' . $detail->drug->image)}}" alt="Image" style="width: 100px; height: auto;">
+                    </a>
+                </td>
+                <td>{{ $detail->total }}</td>
                 <td>
                     <form action="{{ route('telemedicinedetails.destroy', $detail->id) }}" method="post" class="d-inline">
                         @csrf
@@ -50,7 +52,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="6" class="text-center">No data available</td>
+                <td colspan="7" class="text-center">No data available</td>
             </tr>
         @endforelse
     </tbody>

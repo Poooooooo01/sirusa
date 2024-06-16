@@ -1,8 +1,8 @@
-@extends('layouts.sidebar')
+@extends('layouts.doctor')
 @section('container')
 <div class="container">
     <h2>Add Telemedicine Detail</h2>
-    <form action="{{ route('telemedicine.details.store', ['telemedicine' => $telemedicine->id]) }}" method="post">
+    <form action="{{ route('telemedicinedoctor.details.store', ['telemedicine' => $telemedicine->id]) }}" method="post">
         @csrf
 
         <div class="form-group">

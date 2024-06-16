@@ -84,7 +84,7 @@
                     style="background-image: url(images/logo.jpg);"></a>
                 <ul class="list-unstyled components mb-5">
                     <li>
-                        <a href="#">
+                        <a href="{{ URL::to('patient') }}">
                             <i class="fas fa-home"></i> Home
                         </a>
                     </li>
@@ -101,6 +101,11 @@
                     <li>
                         <a href="{{ route('testimonial.create') }}" class="nav-link">
                             <i class="fas fa-comment"></i> Testimoni
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ URL::to('schedulespatient') }}" class="nav-link">
+                            <i class="fas fa-calendar-alt"></i> Schedules
                         </a>
                     </li>
                     <li>
@@ -180,7 +185,6 @@
             "lengthChange": false,
             "autoWidth": false,
             "pageLength": 5, // Menampilkan hanya 5 baris data
-            "buttons": ["copy", "csv", "excel", "pdf", "print"]
         }).buttons().container().appendTo('#datatable1_wrapper .col-md-6:eq(0)');
 
         $('#datatable2').DataTable({
