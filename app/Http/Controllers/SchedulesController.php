@@ -60,6 +60,12 @@ class SchedulesController extends Controller
 
         return redirect()->route('schedules.index')->with('successMessage', 'Schedule deleted successfully.');
     }
+
+    public function patient()
+    {
+        $schedules = Schedules::with('doctor')->orderBy('id')->get();
+        return view('patient.schedules', compact('schedules'));
+    }
 }
 
 

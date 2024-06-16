@@ -14,6 +14,7 @@ use App\Notifications\VerifyEmailNotification;
 class SocialiteController extends Controller
 {
     protected $redirectTo = 'patient';
+
     public function redirect()
     {
         return Socialite::driver('google')->redirect();
@@ -26,21 +27,34 @@ class SocialiteController extends Controller
             $userFromDatabase = User::where('google_id', $userFromGoogle->getId())->first();
 
             if (!$userFromDatabase) {
-                $newUser = User::create([
-                    'google_id' => $userFromGoogle->getId(),
-                    'username' => $userFromGoogle->getName(), // Adjust this based on your User model
-                    'email' => $userFromGoogle->getEmail(),
-                    'email_verified_at' => null, // Set email_verified_at to null initially
-                    'email_verification_token' => Str::random(32), // Generate verification token
-                    'password' => Hash::make("")
-                ]);
+                // Check if email already exists
+                $userByEmail = User::where('email', $userFromGoogle->getEmail())->first();
+                
+                if ($userByEmail) {
+                    // Update user with google_id and login
+                    $userByEmail->update([
+                        'google_id' => $userFromGoogle->getId(),
+                    ]);
 
-                // Send email verification
-                $this->sendEmailVerification($newUser);
+                    auth()->login($userByEmail);
+                    return redirect()->intended($this->redirectTo);
+                } else {
+                    $newUser = User::create([
+                        'google_id' => $userFromGoogle->getId(),
+                        'username' => $userFromGoogle->getName(), // Adjust this based on your User model
+                        'email' => $userFromGoogle->getEmail(),
+                        'email_verified_at' => null, // Set email_verified_at to null initially
+                        'email_verification_token' => Str::random(32), // Generate verification token
+                        'password' => Hash::make("")
+                    ]);
 
-                // Redirect to home or dashboard
-                auth()->login($newUser);
-                return redirect()->intended($this->redirectTo);
+                    // Send email verification
+                    $this->sendEmailVerification($newUser);
+
+                    // Redirect to home or dashboard
+                    auth()->login($newUser);
+                    return redirect()->intended($this->redirectTo);
+                }
             } else {
                 auth()->login($userFromDatabase);
                 return redirect()->intended($this->redirectTo);
@@ -81,6 +95,7 @@ class SocialiteController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('login');
     }
 }
+

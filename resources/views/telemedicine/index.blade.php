@@ -38,7 +38,6 @@
                 <td>{{ $telemedicine->consultation->patient->nama }}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">
-                        <a href="{{ URL::to('telemedicine/' . $telemedicine->id) . '/edit' }}" class="btn btn-sm btn-warning mr-1">Edit</a>
                         <a href="{{ route('telemedicine.details', $telemedicine->id) }}" class="btn btn-sm btn-secondary mr-1">Detail</a>
                         <form action="{{ URL::to('telemedicine/' . $telemedicine->id) }}" method="post" class="d-inline">
                             @csrf

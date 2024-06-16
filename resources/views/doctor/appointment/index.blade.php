@@ -35,19 +35,21 @@
                         <td>{{ $consultation->status }}</td>
                         <td>{{ $consultation->notes }}</td>
                         <td>
-                                <div class="btn-group" role="group" aria-label="Actions">
-                                    <div class="dropdown">
-                                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Change Status
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="{{ route('consultation.status', ['id' => $consultation->id, 'status' => 'offering']) }}">Offering</a>
-                                            <a class="dropdown-item" href="{{ route('consultation.status', ['id' => $consultation->id, 'status' => 'rejected']) }}">Rejected</a>
-                                            <a class="dropdown-item" href="{{ route('consultation.status', ['id' => $consultation->id, 'status' => 'scheduled']) }}">Scheduled</a>
-                                        </div>
+                            <div class="btn-group" role="group" aria-label="Actions">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Change Status
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{ route('consultation.status', ['id' => $consultation->id, 'status' => 'offering']) }}">Offering</a>
+                                        <a class="dropdown-item" href="{{ route('consultation.status', ['id' => $consultation->id, 'status' => 'rejected']) }}">Rejected</a>
+                                        <a class="dropdown-item" href="{{ route('consultation.status', ['id' => $consultation->id, 'status' => 'scheduled']) }}">Scheduled</a>
+                                        <a class="dropdown-item" href="{{ route('consultation.status', ['id' => $consultation->id, 'status' => 'completed']) }}">Completed</a>
                                     </div>
                                 </div>
+                            </div>
                             <a href="{{ route('conversationdoctor.show', $consultation->id) }}" class="btn btn-primary">Conversation</a>
+                            <a href="{{ route('telemedicine.indexByConsul', $consultation->id) }}" class="btn btn-primary">Telemedicine</a>
                         </td>
                     </tr>
                 @endforeach

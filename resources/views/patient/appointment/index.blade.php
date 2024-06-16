@@ -38,6 +38,7 @@
                         <td>
                             @if($consultation->status == 'scheduled')
                             <a href="{{ route('conversations.show', $consultation->id) }}" class="btn btn-primary">Conversation</a>
+                            <a href="{{ route('telemedicine.indexByConsulPatient', $consultation->id) }}" class="btn btn-primary">Telemedicine</a>
                             @endif
                         </td>
                     </tr>
