@@ -119,6 +119,8 @@ Route::middleware('auth')->group(function () {
         Route::get('schedulespatient', [SchedulesController::class, 'patient']);
         Route::get('/telemedicinepatient/consultation/{consultationId}', [TelemedicinePatientController::class, 'indexByConsultation'])->name('telemedicine.indexByConsulPatient');
         Route::get('telemedicinepatient/{telemedicine}/details', [TelemedicineDetailPatientController::class, 'index'])->name('telemedicinepatient.details');
+        Route::post('/telemedicines/checkout', [TelemedicinePatientController::class, 'checkout'])->name('telemedicinepatient.checkout');
+        Route::post('/midtrans-callback', [TelemedicinePatientController::class, 'paymentCallback'])->name('midtrans.callback');
     });
 
     Route::middleware('role:dokter')->group(function () {

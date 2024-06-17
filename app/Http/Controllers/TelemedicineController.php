@@ -88,9 +88,20 @@ class TelemedicineController extends Controller
             $telemedicine = Telemedicine::findOrFail($id);
             $consultationId = $telemedicine->consultation_id;
             $telemedicine->delete();
-            return redirect()->route('telemedicine.indexByConsultation', $consultationId)->with("successMessage", "Hapus data sukses");
+            return redirect()->route('telemedicine.indexByConsul', $consultationId)->with("successMessage", "Hapus data sukses");
         } catch (\Throwable $th) {
+            // Log the error for debugging purposes
+            \Log::error('Error deleting telemedicine record: ' . $th->getMessage());
+
+            // Check if the telemedicine record was not found
+            if (!isset($consultationId)) {
+                // If $consultationId is not set, redirect back with an error message
+                return redirect()->back()->with("errorMessage", "Telemedicine record not found or another error occurred.");
+            }
+
+            // Redirect to the telemedicine.indexByConsultation route if $consultationId is set
             return redirect()->route('telemedicine.indexByConsultation', $consultationId)->with("errorMessage", $th->getMessage());
         }
     }
+
 }

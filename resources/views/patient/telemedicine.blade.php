@@ -1,4 +1,4 @@
-@extends('layouts.doctor')
+@extends('layouts.patient')
 
 @section('container')
 <div class="container">
@@ -7,6 +7,12 @@
     @if (session('successMessage'))
         <div class="alert alert-success">
             {{ session('successMessage') }}
+        </div>
+    @endif
+
+    @if(session('success'))
+    <div class="alert alert-success">
+        <p>{{ session('success') }}</p>
         </div>
     @endif
 
@@ -20,6 +26,8 @@
                 <tr>
                     <th>Service Name</th>
                     <th>Description</th>
+                    <th>Total</th>
+                    <th>Status</th> <!-- Added Status column -->
                     <th>Action</th>
                 </tr>
             </thead>
@@ -28,8 +36,21 @@
                     <tr>
                         <td>{{ $telemedicine->service_name }}</td>
                         <td>{{ $telemedicine->description }}</td>
+                        <td>{{ number_format($telemedicine->total, 0, ',', '.') }}</td>
+                        <td>{{ ucfirst($telemedicine->status) }}</td> <!-- Display Status -->
                         <td>
-                            <a href="{{ route('telemedicinepatient.details', $telemedicine->id) }}" class="btn btn-secondary">Detail</a>
+                            <div class="d-flex align-items-center">
+                                <a href="{{ route('telemedicinepatient.details', $telemedicine->id) }}" class="btn btn-secondary mr-2">Detail</a>
+                                @if ($telemedicine->status === 'unpaid')
+                                    <form action="{{ route('telemedicinepatient.checkout') }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        <input type="hidden" name="telemedicine_id" value="{{ $telemedicine->id }}">
+                                        <button type="submit" class="btn btn-primary submit-btn" id="pay-button">Bayar Sekarang</button>
+                                    </form>
+                                @else
+                                    <button class="btn btn-success" disabled>Paid</button>
+                                @endif
+                            </div>
                         </td>
                     </tr>
                 @endforeach
