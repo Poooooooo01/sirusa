@@ -1,6 +1,11 @@
 @extends('layouts.patient')
 
 @section('container')
+@if (session()->has("warning"))
+    <div class="alert alert-danger">
+        {{ session("warning") }}
+    </div>
+@endif
     @if (Auth::check()) 
         <div class="container mt-4">
             <h1>Biodata Diri</h1>

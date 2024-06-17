@@ -32,6 +32,10 @@
         .logo {
             width: 80px;
             margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
         }
 
         .logo img {
@@ -45,15 +49,16 @@
                 -8px -8px 15px #fff;
         }
 
-        .wrapper .name {
+        .name {
             font-weight: 600;
             font-size: 1.4rem;
             letter-spacing: 1.3px;
-            padding-left: 10px;
             color: #555;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
-        .wrapper .form-field {
+        .form-field {
             display: flex;
             align-items: center;
             padding-left: 10px;
@@ -62,7 +67,7 @@
             box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
         }
 
-        .wrapper .form-field input {
+        .form-field input {
             width: 100%;
             display: block;
             border: none;
@@ -73,13 +78,13 @@
             padding: 10px 15px 10px 10px;
         }
 
-        .wrapper .form-field .fas,
-        .wrapper .form-field .far {
+        .form-field .fas,
+        .form-field .far {
             margin-right: 10px;
             color: #555;
         }
 
-        .wrapper .btn {
+        .btn {
             box-shadow: none;
             width: 100%;
             height: 40px;
@@ -94,19 +99,20 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            margin-top: 20px;
         }
 
-        .wrapper .btn:hover {
+        .btn:hover {
             background-color: #039BE5;
         }
 
-        .wrapper a {
+        a {
             text-decoration: none;
             font-size: 0.8rem;
             color: #03A9F4;
         }
 
-        .wrapper a:hover {
+        a:hover {
             color: #039BE5;
         }
 
@@ -118,16 +124,27 @@
 
         .btn-google {
             background-color: #DB4437;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            border-radius: 25px;
+            height: 40px;
+            text-decoration: none;
+            box-shadow: 3px 3px 3px #b1b1b1,
+                -3px -3px 3px #fff;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-top: 20px;
         }
 
         .btn-google:hover {
             background-color: #c1351b;
         }
 
-        .btn-google img {
-            width: 18px;
-            height: 18px;
+        .btn-google i {
             margin-right: 10px;
+            color: #fff;
         }
 
         @media(max-width: 380px) {
@@ -145,7 +162,7 @@
         <div class="logo">
             <img src="../images/logo.jpg" alt="Logo">
         </div>
-        <div class="text-center mt-4 name">
+        <div class="text-center name">
             SIRUSA
         </div>
         @if (session('error'))
@@ -163,10 +180,14 @@
             </div>
             <button class="btn mt-3" type="submit">Login</button>
         </form>
-        <div class="text-center fs-6">
+        <div class="text-center fs-6 mt-2">
             <a href="{{ route('forgetpassword') }}">Forget password?</a> |
-            <a href={{ route('register.patient') }}>Register?</a>
-            <a href="{{ route('redirect') }}" class="btn btn-google"> <img src="https://i.pinimg.com/474x/9d/de/9d/9dde9d190e2a1988856651d7dc93d8e3.jpg" alt="Google Logo"></a>
+            <a href="{{ route('register.patient') }}">Register?</a>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{{ route('redirect') }}" class="btn-google">
+                <i class="fab fa-google"></i> Login with Google
+            </a>
         </div>
     </div>
 </body>

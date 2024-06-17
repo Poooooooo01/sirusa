@@ -10,15 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class TestimonialsController extends Controller
 {
-    public function index()
-    {
-        $testimonials = Testimonials::all(); 
-        return view('testimonials.index', ['testimonials' => $testimonials]);
-    }
-
     public function create()
     {
-        $patient = Auth::user()->patient; // Get the logged-in user's patient information
+        $user = Auth::user();
+        $patient = $user->patient;
+
+        if (!$patient) {
+            // Redirect to biodata edit page if patient data does not exist
+            return redirect()->route('biodata.create')->with('warning', 'Please complete your biodata before submitting a testimonial.');
+        }
+
         return view('testimonials.create', ['patient' => $patient]);
     }
 

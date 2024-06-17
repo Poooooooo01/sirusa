@@ -130,6 +130,11 @@
                             <i class="fas fa-video"></i> Telemedicine
                         </a>
                         <ul class="collapse list-unstyled" id="telemedicineSubmenu">
+                        <li>
+                                <a href="{{ URL::to('telemedicine') }}"
+                                    class="nav-link {{ Request::is('telemedicine') ? ' active' : '' }}"><i
+                                        class="fas fa-video"></i> Telemedicine</a>
+                            </li>
                             <li>
                                 <a href="{{ URL::to('drug') }}"
                                     class="nav-link {{ Request::is('drug') ? ' active' : '' }}"><i

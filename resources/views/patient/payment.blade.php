@@ -1,11 +1,8 @@
 <!-- resources/views/patient/payment.blade.php -->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Payment</title>
-</head>
-<body>
+@extends('layouts.patient')
+
+@section('container')
     @if(isset($error) && $error)
         <p>{{ $error }}</p>
     @else
@@ -32,5 +29,4 @@
             };
         </script>
     @endif
-</body>
-</html>
+@endsection

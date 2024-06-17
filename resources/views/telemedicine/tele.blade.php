@@ -13,9 +13,6 @@
     </div>
 @endif
 
-<h2>Telemedicine for Consultation with {{ $consultation->patient->nama }} and Dr. {{ $consultation->doctor->name }}</h2>
-
-<a href="{{ route('telemedicine.createFromConsultation', $consultation->id) }}" class="btn btn-primary btn-sm mr-2">Telemedicine</a>
 <br><br>
 <table id="datatable1" class="table table-bordered table-striped">
     <thead>
@@ -25,7 +22,6 @@
             <th>Description</th>
             <th>Doctor</th>
             <th>Patient</th>
-            <th width="15%">Action</th> <!-- Adjusted width to give more space for buttons -->
         </tr>
     </thead>
     <tbody>
@@ -36,15 +32,6 @@
                 <td>{{ $telemedicine->description }}</td>
                 <td>{{ $telemedicine->consultation->doctor->name }}</td>
                 <td>{{ $telemedicine->consultation->patient->nama }}</td>
-                <td class="align-middle text-center">
-                    <div class="d-flex justify-content-center">
-                        <form action="{{ URL::to('telemedicine/' . $telemedicine->id) }}" method="post" class="d-inline">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin mau menghapus data ini {{ $telemedicine->name }} ?')">Delete</button>
-                        </form>
-                    </div>
-                </td>
             </tr>
         @endforeach
 
