@@ -22,6 +22,7 @@
             <th>Description</th>
             <th>Doctor</th>
             <th>Patient</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +33,7 @@
                 <td>{{ $telemedicine->description }}</td>
                 <td>{{ $telemedicine->consultation->doctor->name }}</td>
                 <td>{{ $telemedicine->consultation->patient->nama }}</td>
+                <td>{{ $telemedicine->status }}</td>
             </tr>
         @endforeach
 
