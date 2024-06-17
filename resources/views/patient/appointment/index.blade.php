@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="container">
-<a href="{{ route('appointment.create') }}" class="btn btn-success mb-3">Add</a>
+    <a href="{{ route('appointment.create') }}" class="btn btn-success mb-3">Add</a>
     <h1>My Consultations</h1>
 
     @if (session('success'))
@@ -37,8 +37,8 @@
                         <td>{{ $consultation->notes }}</td>
                         <td>
                             @if($consultation->status == 'scheduled')
-                            <a href="{{ route('conversations.show', $consultation->id) }}" class="btn btn-primary">Conversation</a>
-                            <a href="{{ route('telemedicine.indexByConsulPatient', $consultation->id) }}" class="btn btn-primary">Telemedicine</a>
+                                <a href="{{ route('conversations.show', $consultation->id) }}" class="btn btn-primary mb-2">Conversation</a>
+                                <a href="{{ route('telemedicine.indexByConsulPatient', $consultation->id) }}" class="btn btn-secondary mb-2">Telemedicine</a>
                             @endif
                         </td>
                     </tr>

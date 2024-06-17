@@ -53,33 +53,39 @@
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif
 
-                    <form action="{{ route('testimonial.store') }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <label for="nama">Name:</label>
-                            <input type="text" name="nama" id="nama" class="form-control" value="{{ $patient->nama }}" readonly required>
+                    @if(!$patient->nama)
+                        <div class="alert alert-warning">
+                            Please <a href="{{ route('profile.edit') }}">complete your profile</a> before submitting a testimonial.
                         </div>
-                        <div class="form-group">
-                            <label for="star_rating">Rating:</label><br>
-                            <div class="rate">
-                                <input type="radio" id="star5" name="star_rating" value="5"/>
-                                <label for="star5" title="5 stars">5 stars</label>
-                                <input type="radio" id="star4" name="star_rating" value="4"/>
-                                <label for="star4" title="4 stars">4 stars</label>
-                                <input type="radio" id="star3" name="star_rating" value="3"/>
-                                <label for="star3" title="3 stars">3 stars</label>
-                                <input type="radio" id="star2" name="star_rating" value="2"/>
-                                <label for="star2" title="2 stars">2 stars</label>
-                                <input type="radio" id="star1" name="star_rating" value="1"/>
-                                <label for="star1" title="1 star">1 star</label>
+                    @else
+                        <form action="{{ route('testimonial.store') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="nama">Name:</label>
+                                <input type="text" name="nama" id="nama" class="form-control" value="{{ $patient->nama }}" readonly required>
                             </div>
-                        </div><br><br>
-                        <div class="form-group">
-                            <label for="commentar">Comment:</label>
-                            <textarea name="commentar" id="commentar" class="form-control" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                            <div class="form-group">
+                                <label for="star_rating">Rating:</label><br>
+                                <div class="rate">
+                                    <input type="radio" id="star5" name="star_rating" value="5"/>
+                                    <label for="star5" title="5 stars">5 stars</label>
+                                    <input type="radio" id="star4" name="star_rating" value="4"/>
+                                    <label for="star4" title="4 stars">4 stars</label>
+                                    <input type="radio" id="star3" name="star_rating" value="3"/>
+                                    <label for="star3" title="3 stars">3 stars</label>
+                                    <input type="radio" id="star2" name="star_rating" value="2"/>
+                                    <label for="star2" title="2 stars">2 stars</label>
+                                    <input type="radio" id="star1" name="star_rating" value="1"/>
+                                    <label for="star1" title="1 star">1 star</label>
+                                </div>
+                            </div><br><br>
+                            <div class="form-group">
+                                <label for="commentar">Comment:</label>
+                                <textarea name="commentar" id="commentar" class="form-control" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>

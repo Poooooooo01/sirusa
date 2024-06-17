@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class TelemedicineAdminController extends Controller
 {
+
+    public function index()
+    {
+        $telemedicines = Telemedicine::all();
+
+        return view('telemedicine.tele')->with('telemedicines', $telemedicines);
+    }
+
+
     public function indexByConsultation($consultationId)
     {
         $consultation = Consultation::with('telemedicines')->findOrFail($consultationId);

@@ -98,6 +98,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('gallery', GalleriesController::class);
         Route::resource('testimon', TestimonialsController::class);
         Route::resource('report', ReportController::class);
+        Route::resource('telemedicine', TelemedicineAdminController::class);
         Route::get('telemedicine/create/{consultation}', [TelemedicineAdminController::class, 'createFromConsultation'])->name('telemedicine.createFromConsultation');
         Route::post('telemedicine/storeFromConsultation', [TelemedicineAdminController::class, 'storeFromConsultation'])->name('telemedicine.storeFromConsultation');
         Route::get('telemedicine/{telemedicine}/details/create', [TelemedicineDetailController::class, 'create'])->name('telemedicine.details.create');

@@ -35,9 +35,9 @@
                         <td>{{ $consultation->status }}</td>
                         <td>{{ $consultation->notes }}</td>
                         <td>
-                            <div class="btn-group" role="group" aria-label="Actions">
+                            <div class="btn-group mb-2" role="group" aria-label="Actions">
                                 <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-primary dropdown-toggle mr-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Change Status
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -48,8 +48,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="{{ route('conversationdoctor.show', $consultation->id) }}" class="btn btn-primary">Conversation</a>
-                            <a href="{{ route('telemedicine.indexByConsul', $consultation->id) }}" class="btn btn-primary">Telemedicine</a>
+                            <a href="{{ route('conversationdoctor.show', $consultation->id) }}" class="btn btn-info mr-2 mb-2">Conversation</a>
+                            <a href="{{ route('telemedicine.indexByConsul', $consultation->id) }}" class="btn btn-secondary mb-2">Telemedicine</a>
                         </td>
                     </tr>
                 @endforeach
