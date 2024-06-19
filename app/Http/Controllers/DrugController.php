@@ -11,8 +11,7 @@ class DrugController extends Controller
 {
     public function index()
     {
-        $brand = Brand::all();
-        $drugs = Drug::with('category')->orderBy('description')->get();
+        $drugs = Drug::with('category', 'brand')->orderBy('description')->get();
         return view('drug.index', ['title' => 'Drugs', 'drugs' => $drugs]);
     }
 
@@ -38,10 +37,8 @@ class DrugController extends Controller
             'price' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg,gif|max:1024',
         ], $messages);
-        
 
         try {
-
             if($request->hasFile('image')) {
                 $data['image'] = $request->file("image")->store('img', 'public');
             } else {
@@ -65,8 +62,9 @@ class DrugController extends Controller
     public function edit(string $id)
     {
         $drug = Drug::findOrFail($id);
+        $brands = Brand::all();
         $categories = Category::all();
-        return view('drug.form', ['title' => 'Edit Obat', 'drug' => $drug, 'categories' => $categories]);
+        return view('drug.form', ['title' => 'Edit Obat', 'drug' => $drug, 'categories' => $categories, 'brands' => $brands]);
     }
 
     public function update(Request $request, string $id)
@@ -82,23 +80,23 @@ class DrugController extends Controller
             'description' => 'required',
             'category_id' => 'required',
             'price' => 'required',
-            'image' => 'required|mimes:png,jpg,jpeg,svg|max:2048',
+            'image' => 'nullable|mimes:png,jpg,jpeg,svg|max:2048',
         ], $messages);
 
         try {
             if($request->hasFile('image')) {
                 $data['image'] = $request->file("image")->store('img', 'public');
             } else {
-                $data['image'] = null;
+                unset($data['image']);
             }
 
-        $drug = Drug::findOrFail($id);
-        $drug->update($data);
+            $drug = Drug::findOrFail($id);
+            $drug->update($data);
 
-        return redirect()->route('drug.index')->with("successMessage", "Edit data sukses");
+            return redirect()->route('drug.index')->with("successMessage", "Edit data sukses");
         } catch (\Throwable $th) {
-            return redirect()->route('drug.index')->with("errorMessage", "Edit data sukses");
-         }
+            return redirect()->route('drug.index')->with("errorMessage", $th->getMessage());
+        }
     }
 
     public function destroy(string $id)

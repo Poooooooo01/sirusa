@@ -43,9 +43,9 @@
                 <td>{{ $drug->category->categories }}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">
-                        <a href="{{ URL::to('drugdoctor/' .$drug->id). '/edit' }}" class="btn btn-sm btn-warning mr-2">Edit</a>
+                        <a href="{{ URL::to('drug/' .$drug->id). '/edit' }}" class="btn btn-sm btn-warning mr-2">Edit</a>
 
-                        <form action="{{ URL::to('drugdoctor/' .$drug->id) }}" method="post">
+                        <form action="{{ URL::to('drug/' .$drug->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin mau menghapus data ini {{ $drug->name }} ?')">Delete</button>
