@@ -64,8 +64,7 @@ class TelemedicinePatientController extends Controller
             $snapToken = null;
             $error = 'Invalid or expired token. Please try again.';
         }
-
-        return view('patient.payment', compact('snapToken', 'telemedicine', 'error'));
+        return view('patient.payment', compact('snapToken', 'telemedicine', 'error', 'totalAmount'));
     }
 
 
@@ -91,8 +90,3 @@ class TelemedicinePatientController extends Controller
 
 
 }
-
-
-
-
-
