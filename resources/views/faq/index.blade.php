@@ -31,8 +31,7 @@
                     <td>{{ $faq->answer }}</td>
                     <td>
                         <div class="d-flex">
-                            <a href="{{ route('configuration.show', $faq->id) }}" class="btn btn-sm btn-info mr-2">Show</a>
-                            <a href="{{ route('configuration.edit', $faq->id) }}"
+                            <a href="{{ route('faq.edit', $faq->id) }}"
                                 class="btn btn-sm btn-warning mr-2">Edit</a>
 
                             <form action="{{ route('faq.destroy', $faq->id) }}" method="post">

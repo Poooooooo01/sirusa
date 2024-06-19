@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class TestimonialsController extends Controller
 {
+    public function index()
+    {
+        // Ambil semua testimonial dari database
+        $testimonials = Testimonials::all();
+
+        // Kembalikan view dengan data testimonial
+        return view('testimonials.index', compact('testimonials'));
+    }
+
     public function create()
     {
         $user = Auth::user();

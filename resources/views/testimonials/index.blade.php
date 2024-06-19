@@ -18,6 +18,7 @@
             <th width="5%">Id.</th>
             <th>Name</th>
             <th>Commentar</th>
+            <th>Rating</th>
             <th width="10%">Action</th>
         </tr>
     </thead>
@@ -27,6 +28,7 @@
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $testimonial->nama }}</td>
                 <td>{{ $testimonial->commentar }}</td>
+                <td>{{ $testimonial->star_rating}}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">
 
