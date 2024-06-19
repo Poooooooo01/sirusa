@@ -43,7 +43,6 @@
             </td>
             <td>
                 <div class="d-flex">
-                    <a href="{{ route('doctoradmin.show', $doctor->id) }}" class="btn btn-sm btn-info mr-2">Show</a>
                     <a href="{{ route('doctoradmin.edit', $doctor->id) }}" class="btn btn-sm btn-warning mr-2">Edit</a>
 
                     <form action="{{ route('doctoradmin.destroy', $doctor->id) }}" method="post">

@@ -23,7 +23,7 @@
         @foreach ($reports as $index => $report)
         <tr>
             <td>{{ $index + 1 }}</td>
-            <td>{{ $report->name }}</td>
+            <td>{{ $report->nama }}</td>
             <td>{{ $report->email }}</td>
             <td>{{ $report->subject }}</td>
             <td>{{ $report->message }}</td>

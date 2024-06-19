@@ -29,7 +29,6 @@
                 <td>{{ $brand->brand }}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">
-                        <a href="{{ URL::to('brand/' .$brand->id) }}" class="btn btn-sm btn-info mr-2">Show</a>
                         <a href="{{ URL::to('brand/' .$brand->id). '/edit' }}" class="btn btn-sm btn-warning mr-2">Edit</a>
 
                         <form action="{{ URL::to('brand/' .$brand->id) }}" method="post">

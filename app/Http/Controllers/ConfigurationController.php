@@ -10,8 +10,8 @@ class ConfigurationController extends Controller
 {
     public function index()
     {
-        // $configurations = Configuration::all();
-        // return view('configuration.index', ['title' => 'configurations', 'configurations' => $configurations]);
+        $configurations = Configuration::all();
+        return view('configuration.index', ['title' => 'configurations', 'configurations' => $configurations]);
     }
 
     public function create()

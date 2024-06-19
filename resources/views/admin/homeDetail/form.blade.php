@@ -10,8 +10,8 @@
     <div class="row">
         <div class="col-12">
             <div class="form-group">
-                <label class="font-weight-bold">title</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}">
+                <label class="font-weight-bold">Title</label>
+                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title', $homeDetail->title ?? '') }}">
 
                 <!-- error message untuk title -->
                 @error('title')
@@ -23,7 +23,7 @@
 
             <div class="form-group">
                 <label class="font-weight-bold">Description</label>
-                <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="5">{{ old('description') }}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="5">{{ old('description', $homeDetail->description ?? '') }}</textarea>
 
                 <!-- error message untuk description -->
                 @error('description')

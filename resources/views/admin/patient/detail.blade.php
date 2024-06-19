@@ -28,11 +28,6 @@
             <input type="text" id="emergency_contact" name="emergency_contact" class="form-control" 
             value="{{ $patient->emergency_contact}}" readonly>
         </div>
-        <div class="form-group">
-            <label for="user_id">Pasien</label>
-            <input type="text" id="user_id" name="user_id" class="form-control" 
-            value="{{ $patient->user_id }}" readonly>
-        </div>
       
         <a href="{{ route('patientadmin.index') }}" class="btn btn-sm btn-secondary">Back</a>
     </div>
