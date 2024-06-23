@@ -70,11 +70,10 @@ class TelemedicinePatientController extends Controller
             $snapToken = null;
             $error = 'Invalid or expired token. Please try again.';
         }
-
-        // Send invoice email
+      // Send invoice email
         Mail::to($email)->send(new InvoiceMail($telemedicine, $totalAmount));
 
-        return view('patient.payment', compact('snapToken', 'telemedicine', 'error'));
+        return view('patient.payment', compact('snapToken', 'telemedicine', 'error', 'totalAmount'));
     }
 
     public function paymentCallback(Request $request)
@@ -96,9 +95,3 @@ class TelemedicinePatientController extends Controller
         return response()->json(['status' => 'ok']);
     }
 }
-
-
-
-
-
-
