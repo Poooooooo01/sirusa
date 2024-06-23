@@ -2,16 +2,16 @@
 
 @section('container')
 <div class="container">
-    <h2>Transaction List</h2>
-
-    <table class="table table-bordered table-striped">
+    <h2>Transaction List  </h2>
+    <h5>Total Revenue : {{ number_format($totalExpense, 0, ',', '.') }}</h5>
+    <table id="datatable1" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Amount</th>
                 <th>Drug</th>
                 <th>Price</th>
-                <th>Total Expense</th>
+                <th>Total Revenue</th>
             </tr>
         </thead>
         <tbody>
@@ -27,10 +27,6 @@
                     </tr>
                 @endif
             @endforeach
-            <tr>
-                <td colspan="4"><strong>Total:</strong></td>
-                <td><strong>{{ number_format($totalExpense, 0, ',', '.') }}</strong></td>
-            </tr>
         </tbody>
     </table>
 </div>
