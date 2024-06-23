@@ -25,7 +25,7 @@
             <th>Description</th>
             <th>Doctor</th>
             <th>Patient</th>
-            <th width="15%">Action</th> <!-- Adjusted width to give more space for buttons -->
+            <th width="15%">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -38,6 +38,7 @@
                 <td>{{ $telemedicine->consultation->patient->nama }}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">
+                        <a href="{{ route('telemedicine.details', $telemedicine->id) }}" class="btn btn-sm btn-secondary mr-1">Detail</a>
                         <form action="{{ URL::to('telemedicine/' . $telemedicine->id) }}" method="post" class="d-inline">
                             @csrf
                             @method('delete')
