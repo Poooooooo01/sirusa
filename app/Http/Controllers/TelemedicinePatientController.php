@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Telemedicine;
 use App\Models\Consultation;
 use Illuminate\Http\Request;
+use App\Mail\InvoiceMail;
+use Illuminate\Support\Facades\Mail;
 
 class TelemedicinePatientController extends Controller
 {
@@ -36,6 +38,10 @@ class TelemedicinePatientController extends Controller
         $consultation = $telemedicine->consultation;
         $patient = $consultation->patient;
 
+        // Assuming Patient model has a relationship with User model
+        $user = $patient->user;
+        $email = $user->email ?? 'default@example.com';
+
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         \Midtrans\Config::$isProduction = false;
@@ -50,7 +56,7 @@ class TelemedicinePatientController extends Controller
             'customer_details' => array(
                 'first_name' => $patient->nama,
                 'last_name' => '',
-                'email' => $patient->email ?? 'default@example.com',
+                'email' => $email,
                 'phone' => $patient->emergency_contact,
                 'address' => $patient->address
             ),
@@ -65,10 +71,11 @@ class TelemedicinePatientController extends Controller
             $error = 'Invalid or expired token. Please try again.';
         }
 
+        // Send invoice email
+        Mail::to($email)->send(new InvoiceMail($telemedicine, $totalAmount));
+
         return view('patient.payment', compact('snapToken', 'telemedicine', 'error'));
     }
-
-
 
     public function paymentCallback(Request $request)
     {
@@ -88,9 +95,8 @@ class TelemedicinePatientController extends Controller
 
         return response()->json(['status' => 'ok']);
     }
-
-
 }
+
 
 
 

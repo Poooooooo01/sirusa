@@ -31,19 +31,31 @@ class TelemedicineDetailDoctorController extends Controller
             'price' => 'required|numeric',
         ]);
 
-        $total = $request->amount * $request->price;
+        $drug = Drug::find($request->drug_id);
 
-        $telemedicineDetail = $telemedicine->details()->create([
-            'detail_description' => $request->detail_description,
-            'amount' => $request->amount,
-            'drug_id' => $request->drug_id,
-            'price' => $request->price,
-            'total' => $total,
-        ]);
+        if ($drug->stock < $request->amount) {
+            return redirect()->back()->with('errorMessage', 'Insufficient stock for the selected drug.');
+        }
+
+        DB::transaction(function () use ($request, $telemedicine, $drug) {
+            $total = $request->amount * $request->price;
+
+            $telemedicineDetail = $telemedicine->details()->create([
+                'detail_description' => $request->detail_description,
+                'amount' => $request->amount,
+                'drug_id' => $request->drug_id,
+                'price' => $request->price,
+                'total' => $total,
+            ]);
+
+            $drug->stock -= $request->amount;
+            $drug->save();
+        });
 
         return redirect()->route('telemedicinedoctor.details', $telemedicine->id)
-                         ->with('successMessage', 'Telemedicine detail added successfully.');
+            ->with('successMessage', 'Telemedicine detail added successfully.');
     }
+
 
     public function destroy($id)
     {
@@ -51,7 +63,7 @@ class TelemedicineDetailDoctorController extends Controller
         if ($detail) {
             $detail->delete();
             return redirect()->route('telemedicinedoctor.details', $detail->telemedicine_id)
-                             ->with('successMessage', 'Detail deleted successfully.');
+                ->with('successMessage', 'Detail deleted successfully.');
         } else {
             return redirect()->back()->with('errorMessage', 'Detail not found.');
         }

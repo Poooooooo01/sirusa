@@ -126,7 +126,8 @@
                                         class="fas fa-list"></i> Category</a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('telemedicine') }}" class="nav-link {{ Request::is('payment') ? ' active' : '' }}"><i
+                                <a href="{{ URL::to('telemedicine') }}"
+                                    class="nav-link {{ Request::is('payment') ? ' active' : '' }}"><i
                                         class="fas fa-credit-card"></i> Payment</a>
                             </li>
                         </ul>
@@ -192,16 +193,38 @@
                                         class="fas fa-hospital"></i> Facilities</a>
                             </li>
                             <li>
-                                <a href="{{ URL::to('brand') }}" class="nav-link {{ Request::is('brand') ? ' active' : '' }}"><i
+                                <a href="{{ URL::to('brand') }}"
+                                    class="nav-link {{ Request::is('brand') ? ' active' : '' }}"><i
                                         class="fas fa-eye"></i> Brand</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ URL::to('report') }}" class="nav-link {{ Request::is('report') ? ' active' : '' }}">
-                            <i class="fas fa-file"></i> Report
+                        <a href="#reportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <i class="fas fa-file-alt"></i> Report
                         </a>
+                        <ul class="collapse list-unstyled" id="reportSubmenu">
+                            <li>
+                                <a href="{{ URL::to('report') }}"
+                                    class="nav-link {{ Request::is('report') ? ' active' : '' }}">
+                                    <i class="fas fa-users"></i> Guest Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ URL::to('drugreport') }}"
+                                    class="nav-link {{ Request::is('drugreport') ? ' active' : '' }}">
+                                    <i class="fas fa-pills"></i> Drug Report
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ URL::to('transaction') }}"
+                                    class="nav-link {{ Request::is('transaction') ? ' active' : '' }}">
+                                    <i class="fas fa-money-bill-wave"></i> Transaction Report
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
                     <li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -302,4 +325,3 @@
 </body>
 
 </html>
-
