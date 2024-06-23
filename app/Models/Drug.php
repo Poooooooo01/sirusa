@@ -20,6 +20,7 @@ class Drug extends Model
         'category_id',
         'price',
         'image',
+        'stock'
     ];
 
     const CREATED_AT = 'created_at';
@@ -35,5 +36,10 @@ class Drug extends Model
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function telemedicines()
+    {
+        return $this->hasMany(Telemedicine::class);
     }
 }

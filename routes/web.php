@@ -15,6 +15,7 @@ use App\Http\Controllers\LoginDoctorController;
 use App\Http\Controllers\HomeDetailController;
 use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\PatientAdminController;
 use App\Http\Controllers\DoctorAdminController;
@@ -41,6 +42,7 @@ use App\Http\Controllers\TelemedicineDetailDoctorController;
 use App\Http\Controllers\DrugDoctorController;
 use App\Http\Controllers\TelemedicinePatientController;
 use App\Http\Controllers\TelemedicineDetailPatientController;
+use App\Http\Controllers\DrugReportController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk landing page yang tidak memerlukan login
@@ -99,6 +101,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('testimon', TestimonialsController::class);
         Route::resource('report', ReportController::class);
         Route::resource('telemedicine', TelemedicineAdminController::class);
+        Route::resource('drugreport', DrugReportController::class);
+        Route::resource('transaction', TransactionController::class);
         Route::get('telemedicine/create/{consultation}', [TelemedicineAdminController::class, 'createFromConsultation'])->name('telemedicine.createFromConsultation');
         Route::post('telemedicine/storeFromConsultation', [TelemedicineAdminController::class, 'storeFromConsultation'])->name('telemedicine.storeFromConsultation');
         Route::get('telemedicine/{telemedicine}/details/create', [TelemedicineDetailController::class, 'create'])->name('telemedicine.details.create');

@@ -24,6 +24,7 @@
             <th>Brand</th>
             <th>Price</th>
             <th>Category</th>
+            <th>Stock</th>
             <th width="10%">Action</th>
         </tr>
     </thead>
@@ -41,6 +42,7 @@
                 <td>{{ $drug->brand->brand }}</td>
                 <td>{{ $drug->price }}</td>
                 <td>{{ $drug->category->categories }}</td>
+                <td>{{ $drug->stock }}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">
                         <a href="{{ URL::to('drugdoctor/' .$drug->id). '/edit' }}" class="btn btn-sm btn-warning mr-2">Edit</a>

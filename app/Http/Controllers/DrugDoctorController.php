@@ -35,6 +35,7 @@ class DrugDoctorController extends Controller
             'description' => 'required',
             'category_id' => 'required',
             'price' => 'required',
+            'stock' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg,gif|max:1024',
         ], $messages);
 
@@ -74,6 +75,7 @@ class DrugDoctorController extends Controller
             'description' => 'required',
             'category_id' => 'required',
             'price' => 'required',
+            'stock' => 'required',
             'image' => 'nullable|mimes:png,jpg,jpeg,svg|max:2048',
         ], $messages);
 

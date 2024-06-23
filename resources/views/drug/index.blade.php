@@ -24,6 +24,7 @@
             <th>Brand</th>
             <th>Price</th>
             <th>Category</th>
+            <th>Stock</th>
             <th width="10%">Action</th>
         </tr>
     </thead>
@@ -40,6 +41,7 @@
                 <td>{{ $drug->description }}</td>
                 <td>{{ $drug->brand->brand }}</td>
                 <td>{{ $drug->price }}</td>
+                <td>{{ $drug->stock }}</td>
                 <td>{{ $drug->category->categories }}</td>
                 <td class="align-middle text-center">
                     <div class="d-flex justify-content-center">

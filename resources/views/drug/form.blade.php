@@ -63,6 +63,17 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="stock">Stock</label>
+                <input type="text" id="stock" name="stock"
+                    class="form-control @error('stock') is-invalid @enderror"
+                    value="{{ isset($drug) ? $drug->stock : old('stock') }}">
+                @error('stock')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="">Image</label>
                 <input type="file" name="image" id="image" class="form-control @error('image') is-invalid
                 @enderror" placeholder="Image">
